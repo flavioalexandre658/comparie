@@ -1,0 +1,61 @@
+
+
+
+<div class="col-12 col-md-12">
+    
+    <section class="content">
+        <div class="heading row">
+            <div class="col-12 col-md-12">
+                <div class="col-12 col-md-12 text-light" id="mensagem">
+                    <h1>Encontre ofertas baratas e com custo/beneficio que cabe no seu bolso!</h1>
+                </div>
+            <div class="col-12 col-md-12" ng-controller="tipoController">
+                <ul class="nav justify-content-center" id="tipos">
+                    <li class="nav-item" ng-repeat="tipo in listaTipos">
+                        <i class="material-icons md-48 white-color" id="{{tipo.nomeTipo.toLowerCase()}}">{{tipo.iconTipo}}</i><a ng-click="tipoClicado(tipo);" class="nav-link" href="#!{{tipo.nomeTipo.toLowerCase()}}">{{tipo.nomeTipo}}</a>
+                    </li>
+                </ul>
+            </div>
+    </section>
+    
+    <section class="row ofertas-main">
+            <div class="container reveall">
+                <div class="row justify-content-center" id="titulo-ofertas"><h3><b>mais pesquisados</b></h3></div>
+                <hr class="hr-titulo"/>
+                <div class="row">
+                    <carddeck qtditems="4" idcard="id_card" pagid="1" listaproduto="listaPesquisados" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck>
+                </div>
+            </div>
+    </section>
+
+    <section class="b-content row row-m-t">
+        <div class="container reveall">
+
+            <div class="col-12 col-md-12">
+                    <div class="row justify-content-center titulo-busca-main">
+                        <h3><b>O que você está buscando?</b></h3>
+                    </div>
+                    <hr class="hr-titulo"/>
+
+                    <div class="row justify-content-center subtitulo-busca-main">
+                        <h6>Selecione uma categoria e compare as melhores ofertas.</h6>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <button class="btn btn-outline-dark" id="sugestoes" type="button" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample" ng-click="defineListaSugestao(nicho)" ng-repeat="nicho in listaNichos" ng-value="nicho.idNicho">{{nicho.nomeNicho}}</button>
+                    </div>
+            </div>
+
+            <div class="row-m-b collapse busca-container" id="sugestoesNicho"><!--INICIO DE UM CONTENT-->
+
+                <div class="titulo-busca"><h5>Sugestões para "{{nichoClicado.nomeNicho}}"</h5></div>
+
+                <div class="row">
+                    <carddeck qtditems="4" pagid="2" listaproduto="listaSugestao" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck>
+                </div>
+            </div><!--FIM DE UM CONTENT-->
+            
+        </div>
+    </section>
+    
+</div>

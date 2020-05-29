@@ -1,0 +1,53 @@
+<div class="col-12 col-md-12">
+    <nav aria-label="breadcrumb" id="breadcumbSite">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Início</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Pesquisa</li>
+        </ol>
+    </nav>
+
+    <section id="p-container">
+
+        <div class="col-12 col-md-12">
+
+            <div class="col-12 col-md-12 heading-p-container">
+                <div class="row titulo-pesquisa">
+                    <h4>Produtos encontrados</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2 col-md-2">
+                    <div class="col-12 col-md-12">
+                        
+                        <div class="row titulo-painel">
+                            <h5>Marcas</h5>
+                        </div>
+
+                        <!--DIV CONTROLA MENU DE CHECKBOX-->
+                        <ul class="nav mb-3 flex-column" role="tablist">
+                            <li class="nav-item" ng-repeat="marca in listaMarcas">
+                                <div class="custom-control custom-checkbox" >
+                                    <input  class="custom-control-input" id="{{marca.nomeMarca}}"  ng-click="defineMarca(marca, listaProdutos)" data-toggle="pill" type="checkbox" href="#pillespecifico" role="tab"/>
+                                    <label class="custom-control-label" for="{{marca.nomeMarca}}">{{marca.nomeMarca}}</label>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-10 col-md-10">
+                    
+                    <div class="tab-content" id="pills-tabContent">
+                        <!--DIV REFERENTE AO MENU DE PILLS-->
+                        <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{filtro.nomeFiltro}}-tab" id="pillespecifico">
+                            <carddeck-produto  buscafilter="busca" qtditems="36" pagid="1" col="4" listaproduto="listaProdutosSelecionada" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

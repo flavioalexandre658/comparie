@@ -1,0 +1,30 @@
+<div class="m-t">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <button type="button"class="nav-link active" id="cadastrarTipo-tab" data-toggle="tab" href="#cadastrarTipo" role="tab" aria-controls="cadastrarTipo" aria-selected="true">Cadastrar Tipo de Produtos</button>
+        </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarTipoCategoria-tab" data-toggle="tab" href="#cadastrarTipoCategoria" role="tab" aria-controls="cadastrarTipoCategoria" aria-selected="false">Cadastrar Tipo em Categoria</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="cadastrarTipo" role="tabpanel" aria-labelledby="cadastrarTipo-tab">
+            <form class="form-m-t">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        
+                        <div class="form-group">
+                            <label for="nomeTipo">Nome do tipo produto</label>
+                            <input type="text" class="form-control" id="nomeTipo" placeholder="TV, notebook" ng-model="tipo.nomeTipo" required>
+                        </div>
+
+                        <button type="submit"ng-click="cadastrarTipo()" class="btn btn-primary">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>

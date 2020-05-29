@@ -1,0 +1,37 @@
+    <div class="card-deck justify-content-center">
+        <div class="row card-conteudo" ng-mouseover="houverIn(produto.idProduto + idcard)" ng-mouseleave="houverOut(produto.idProduto + idcard)" dir-paginate="produto in listaproduto|itemsPerPage:qtditems" pagination-id="pagid">
+                <div class="card text-center mw-100" ng-mouseenter="infoProdutoLoja(produto)">
+
+                    <carddeck-backdrop produto="produto" idcard="idcard" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></carddeck-backdrop>
+                    
+                    <div class="container-fluid shadow-sm p-3 mb-5 bg-white" id="container-img-card">
+                        <div class="row">
+                            <div class="col-12 col-md-12" style="width: 250px;">
+                                <img class="card-img-top" src="{{produto.imagemProduto}}" alt="{{produto.descricao}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body p-2 align-middle">
+                            <h5 class="card-header bg-transparent border-top">{{produto.nomeProduto}}</h5>
+                    </div>
+
+                    <div class="card-footer p-2 bg-transparent border-0">
+                        <p class="card-text">{{produto.descricao}}</p>
+                    </div>
+
+                    <div class="card-footer p-2 bg-transparent border-0" ng-repeat="loja in listaprodutolojas | filterLoja:produto.idProduto">
+                        <h5 class="preco">R${{loja.preco}} </h5>
+                        <p class="avista">à vista</p>
+                    </div>
+                    
+                    <div class="card-footer bg-transparent border-0" ng-show="onMobile" ng-controller="homeController">
+                        <!-- <button ng-click="showModal(produto.idProduto)" type="button"class="btn btn-outline-primary" data-toggle="modal" id="lojasComProduto">Ver Lojas</button>
+                        <modal-produto produto="produto" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></modal-produto>-->
+                        <button type="button"class="btn btn-outline-primary">Ver Lojas</button>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+   <div class="col-12 col-md-12"><dir-pagination-controls pagination-id="pagid" max-size="2" direction-links="true" boundary-links="false" ></dir-pagination-controls></div>

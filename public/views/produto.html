@@ -1,0 +1,138 @@
+<div class="m-t">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <button type="button"class="nav-link active" id="cadastrarProduto-tab" data-toggle="tab" href="#cadastrarProduto" role="tab" aria-controls="cadastrarProduto" aria-selected="true">Cadastrar Produto</button>
+        </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarProdutoLoja-tab" data-toggle="tab" href="#cadastrarProdutoLoja" role="tab" aria-controls="cadastrarProdutoLoja" aria-selected="false">Cadastrar Produto em Loja</button>
+        </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarProdutoCategoria-tab" data-toggle="tab" href="#cadastrarProdutoCategoria" role="tab" aria-controls="cadastrarProdutoCategoria" aria-selected="false">Cadastrar Produto em Categoria</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="cadastrarProduto" role="tabpanel" aria-labelledby="cadastrarProduto-tab">
+            <form class="form-m-t-p">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="imagemProduto">Imagem do produto</label>
+                            <input type="text" class="form-control" id="imagemProduto" placeholder="Link imagem produto" ng-model="produto.imagemProduto" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="nomeProduto">Nome do produto</label>
+                            <input type="text" class="form-control" id="nomeProduto" placeholder="Smart Tv" ng-model="produto.nomeProduto" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="nomeTipo">Tipo do produto</label>
+                            <select class="form-control" id="nomeTipo"  ng-model="produto.idTipo" required>
+                                <option value="">Tipo</option>
+                                <option  ng-repeat="tipo in listaTipos" ng-value="tipo.idTipo">{{tipo.nomeTipo}}</option>
+                            </select>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="nichoProduto">Nicho do produto</label>
+                            <select class="form-control" id="nichoProduto"  ng-model="produto.idNicho" required>
+                                <option value="">Nicho</option>
+                                <option  ng-repeat="nicho in listaNichos" ng-value="nicho.idNicho">{{nicho.nomeNicho}}</option>
+                            </select>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="marcaProduto">Marca</label>
+                            <select class="form-control" id="marcaProduto" ng-model="produto.idMarca" required>
+                                <option value="">Marca</option>
+                                <option  ng-repeat="marca in listaMarcas" ng-value="marca.idMarca">{{marca.nomeMarca}}</option>
+                            </select>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="descricaoProduto">Descrição</label>
+                            <textarea class="form-control is-invalid" id="descricaoProduto" placeholder="Descreva o produto" ng-model="produto.descricao" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descricaoProduto">Review</label>
+                            <textarea class="form-control is-invalid" id="reviewProduto" placeholder="Escreva uma review do produto" ng-model="produto.review" required></textarea>
+                        </div>
+            
+                        <button type="submit"ng-click="cadastrarProduto();" class="btn btn-primary">Confirmar</button>
+            
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="cadastrarProdutoLoja" role="tabpanel" aria-labelledby="cadastrarProdutoLoja-tab">
+            
+            <form class="form-m-t-p">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="">Produto</label>
+                            <select class="form-control" id="idProduto" ng-model="produto.idProduto" required>
+                                <option value="">Produto</option>
+                                <option  ng-repeat="produto in listaProdutos" ng-value="produto.idProduto">{{produto.nomeProduto}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lojaProduto">Loja</label>
+                            <select class="form-control" id="lojaProduto" ng-model="loja.idLoja" required>
+                                <option value="">Loja</option>
+                                <option  ng-repeat="loja in listaLojas" ng-value="loja.idLoja">{{loja.nomeLoja}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="linkLoja">Link do produto na loja</label>
+                            <input type="text" class="form-control" id="linkLoja" placeholder="Link do produto na loja" ng-model="loja.link" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="precoProduto">Preço do produto na loja</label>
+                            <input type="text" class="form-control" id="precoProduto" placeholder="Preço" ng-model="loja.preco" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parcelasProduto">Preço do produto parcelado</label>
+                            <input type="text" class="form-control" id="parcelasProduto" placeholder="Parcelas" ng-model="loja.parcelas" required>
+                        </div>
+
+                        <button type="submit"ng-click="cadastrarProdutoLoja();" class="btn btn-primary">Confirmar</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        <div class="tab-pane fade" id="cadastrarProdutoCategoria" role="tabpanel" aria-labelledby="cadastrarProdutoCategoria-tab">
+
+            <form class="form-m-t-p">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="">Produto</label>
+                            <select class="form-control" id="idProduto" ng-model="produto.idProduto" required>
+                                <option value="">Produto</option>
+                                <option  ng-repeat="produto in listaProdutos" ng-value="produto.idProduto">{{produto.nomeProduto}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="categoriaProduto">Categoria</label>
+                            <select class="form-control" id="categoriaProduto" ng-model="categoria.idCategoria" required>
+                                <option value="">Categoria</option>
+                                <option  ng-repeat="categoria in listaCategorias" ng-value="categoria.idCategoria">{{categoria.nomeCategoria}}</option>
+                            </select>
+                        </div>
+
+                        <button type="submit"ng-click="cadastrarProdutoCategoria();" class="btn btn-primary">Confirmar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

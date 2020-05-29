@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head access-Control-Allow-Origin>
+
+    <link rel = "shortcut icon" type = "imagem/x-icon" href = "favicon.ico"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="lomadee-verification" content="22885357" />
+    <title>Encontre ofertas com custo/beneficio no Comparie</title>
+    <script  type="text/JavaScript" src="../lib/js/angular.min.js"></script>
+    <script type="text/JavaScript" src="../lib/js/angular-route.min.js"></script>
+
+    <!-- SERVICES  -->
+    <script type="text/JavaScript" src="services/produtoService.js"></script>
+    <script type="text/JavaScript" src="services/homeService.js"></script>
+    <script type="text/JavaScript" src="services/categoriaService.js"></script>
+    <script type="text/JavaScript" src="services/nichoService.js"></script>
+    <script type="text/JavaScript" src="services/lojaService.js"></script>
+    <script type="text/JavaScript" src="services/marcaService.js"></script>
+    <script type="text/JavaScript" src="services/tipoService.js"></script>
+
+    <!-- FIM SERVICES  -->
+
+    <script type="text/JavaScript" src="routes.js"></script>
+    <script type="text/JavaScript" src="app.js"></script>
+    
+    <!-- CONTROLLERS  -->
+    <script type="text/JavaScript" src="controllers/homeController.js"></script>
+    <script type="text/JavaScript" src="controllers/produtoController.js"></script>
+    <script type="text/JavaScript" src="controllers/marcaController.js"></script>
+    <script type="text/JavaScript" src="controllers/categoriaController.js"></script>
+    <script type="text/JavaScript" src="controllers/lojaController.js"></script>
+    <script type="text/JavaScript" src="controllers/nichoController.js"></script>
+    <script type="text/JavaScript" src="controllers/tipoController.js"></script>
+    <script type="text/JavaScript" src="directives.js"></script>
+    <!-- FIM CONTROLLERS  -->
+
+
+    <script type="text/JavaScript" src="../lib/js/scrollreveal.min.js"></script>
+    <script type="text/JavaScript" src="../lib/js/jquery-3.3.1.js"></script>
+    <script type="text/JavaScript" src="../lib/js/popper.min.js"></script>
+    <script type="text/JavaScript" src="../lib/js/code.js"></script>
+    <script type="text/JavaScript" src="../lib/js/concise.js"></script>
+    <script type="text/JavaScript" src="../lib/js/bootstrap.min.js"></script>
+    <script type="text/JavaScript" src="../lib/js/dirPagination.js"></script>
+    <script type="text/JavaScript" src="../lib/js/breadcrumbs.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&family=Oxygen&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/css/normalize.css">
+    <link rel="stylesheet" href="../lib/css/estilos.css">
+</head>
+
+<body ng-controller="homeController">
+    <head>
+        <div class="row">
+            <nav class="navbar navbar-light fixed-top" style="background-color: #000;">
+        
+            <div class="col-1 col-md-1" ng-controller="tipoController">
+                <div class="navbar-collapse" id="conteudoNavbarSuportado">
+
+                    <button class="btn btn-outline-primary" style="background-color: #fff;" type="button" id="dropdownNavButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="navBarSite">
+                            <ul class="nav flex-md-column">
+
+                                <li>
+                                    <a href="#!home">Início</a>
+                                </li>
+                                <li ng-repeat="tipo in listaTipos">
+                                    <a href="#!{{tipo.nomeTipo.toLowerCase()}}">{{tipo.nomeTipo}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2 col-md-2 img-logo" id="logo-img">
+                    <a href="#">
+                        <img src="../lib/imgs/logo.png" class="img-fluid" alt="Logo" height="200" width="200">
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-7">
+                    <div class="input-group barra-pesquisa" style="width: 80%;" ng-controller="tipoController">
+                        <input type="text" class="form-control" ng-model="buscaText" placeholder="Digite sua busca" aria-label="Pesquisar" aria-describedby="botaoPesquisar">
+                        <div class="input-group-append">
+                            <a class="btn btn-light" type="button" ng-click="buscaProduto(buscaText)" href="#!search" id="botaoPesquisar"><span class="material-icons md-18 text-dark">search</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-2">
+                    <div class="row">
+                        <div class="col-1 col-md-2">
+                                <a href="#"><img src="../lib/imgs/facebook.png" alt="Logo" height="20" width="20"></a>
+                        </div>
+                        <div class="col-1 col-md-2">
+                                <a href="#"><img src="../lib/imgs/instagram.png" alt="Logo" height="20" width="20"></a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </head>
+
+    <div ng-view="" id="views"></div>
+
+</body>
+
+
+</html>
+<footer>
+    <div class="row row-footer">
+        <div class="col-3 col-md-3 justify-content-center">
+            <div class="row justify-content-center">
+                <p class="email"><img src="../lib/imgs/email.png" alt="Email" height="35" width="40"><strong>comparie@gmail.com</strong></p>
+                <p class="telefone"><img src="../lib/imgs/telefone.png" alt="Telefone" height="35" width="40">
+                    <strong>73. 98212-7691</strong></p>
+                </p>
+            </div>
+        </div>
+        <div class="col-5 col-md-5 justify-content-center">
+            <div class="row justify-content-center contatos-footer">
+                <p >2020 Copyright &copy; - Comparie. Todos os Direitos Reservados</p>
+                <p >Criado por: Flávio Alexandre, alexandre.flavio658@gmail.com</p>
+            </div>
+        </div>
+        <div class="col-4 col-md-4">
+            <div class="row justify-content-right">
+                <div class="col-12 col-md-12  titulo-merchan-footer">
+                    <h3><b>Precisa de um site como este?</b></h3>
+                </div>
+                <div class="col-12 col-md-12"> <hr class="hr-titulo"/></div>
+                <div class="col-12 col-md-12 subtitulo-busca-main">
+                    <h6>Entre em contato conosco e faça um orçamento.</h6>
+                </div>
+            </div>
+    </div>
+    </div>
+</footer>
