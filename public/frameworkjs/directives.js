@@ -3,7 +3,7 @@ angular.module('directives',[])
   return {
       restrict: 'E',
       scope: { qtditems:'=', idcard: '=', pagid: '=', listaproduto: '=', listaloja: '=', listaprodutolojas: '=' },
-      templateUrl: './directives/card-deck.html',
+      templateUrl: '../directives/card-deck.html',
       controller: function($scope, TipoServ, ProdutoServ) {       
         $scope.infoProdutoLoja = function(produto){
           let produtoloja = $scope.listaprodutolojas.filter(function(arr){
@@ -59,7 +59,7 @@ angular.module('directives',[])
   return {
       restrict: 'E',
       scope: { buscafilter: '=', idcard: '=', qtditems:'=', pagid: '=', col: '=', listaproduto: '=', listaloja: '=', listaprodutolojas: '=' },
-      templateUrl: './directives/card-deck-produto.html',
+      templateUrl: '../directives/card-deck-produto.html',
       controller: function($scope, TipoServ, ProdutoServ) {       
         $scope.infoProdutoLoja = function(produto){
           let produtoloja = $scope.listaprodutolojas.filter(function(arr){
@@ -114,14 +114,14 @@ angular.module('directives',[])
   return{
       restrict: 'E',
       scope:{ produto: '=', produtoid: '=', listaloja: '=', listaprodutolojas: '=' },
-      templateUrl: './directives/modal-produto.html'
+      templateUrl: '../directives/modal-produto.html'
   }
 })
 .directive('carddeckBackdrop', function(){
   return{
       restrict: 'E',
       scope:{ produto: '=', idcard: '=', listaloja: '=', listaprodutolojas: '=' },
-      templateUrl: './directives/card-deck-backdrop.html',
+      templateUrl: '../directives/card-deck-backdrop.html',
       controller: function($scope, TipoServ, ProdutoServ) {  
 
         $scope.houverIn = function(id){
