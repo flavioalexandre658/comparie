@@ -77,7 +77,7 @@ module.exports = function(app) {
 
   app.post('/cadastrarProduto', function(req, res) {  /// Cadastra um novo produto
     produtos = new dbfun.Produtos();
-    produtos.query("INSERT INTO `realmark`.`produtos`(`imagemProduto`, `nomeProduto`, `idTipo`, `idNicho`, `descricao`, `review`, `idMarca`)VALUES('"
+    produtos.query("INSERT INTO `comparie`.`produtos`(`imagemProduto`, `nomeProduto`, `idTipo`, `idNicho`, `descricao`, `review`, `idMarca`)VALUES('"
       + req.body.imagemProduto + "','"
       + req.body.nomeProduto + "','"
       + req.body.idTipo + "','"
@@ -103,7 +103,7 @@ module.exports = function(app) {
 
   app.put('/editarProduto/:idProduto', function(req, res) { /// Edita um obra a partir de seus dados
     produto = new dbfun.Produtos(); /// Conexão com o banco
-    produto.query("UPDATE `realmark`.`produtos` SET `imagemProduto` = '"+ req.body.imagemProduto
+    produto.query("UPDATE `comparie`.`produtos` SET `imagemProduto` = '"+ req.body.imagemProduto
       +"',`nomeProduto` = '"+ req.body.nomeProduto
       +"',`idTipo` = '"+ req.body.idTipo
       +"',`idNicho` = '"+ req.body.idNicho
@@ -123,7 +123,7 @@ module.exports = function(app) {
 
   app.put('/editarProdutoClique/:idProduto', function(req, res) { /// Edita um obra a partir de seus dados
     produto = new dbfun.Produtos(); /// Conexão com o banco
-    produto.query("UPDATE `realmark`.`produtos` SET `cliques` = '"+ req.body.cliques
+    produto.query("UPDATE `comparie`.`produtos` SET `cliques` = '"+ req.body.cliques
       +"'WHERE `idProduto` = '"+req.params.idProduto+"';",  /// Atualiza os dados com a query do banco a patir do id
       function(err) { // Caso ocorra um erro
         if(err)
@@ -149,7 +149,7 @@ module.exports = function(app) {
 
   app.get('/getProduto/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     produto = new dbfun.Produtos();
-    produto.query("SELECT * FROM `realmark`.`produtos` WHERE idProduto=" + req.params.id + ";",
+    produto.query("SELECT * FROM `comparie`.`produtos` WHERE idProduto=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -159,7 +159,7 @@ module.exports = function(app) {
   app.post('/cadastrarCategoria', function(req, res) {  /// Cadastra uma nova categoria
     categorias = new dbfun.Categorias();
 
-    categorias.query("INSERT INTO `realmark`.`categorias` (`nomeCategoria`) VALUES('"
+    categorias.query("INSERT INTO `comparie`.`categorias` (`nomeCategoria`) VALUES('"
       + req.body.nomeCategoria +"');",
       function(err) {
         if(err){
@@ -189,7 +189,7 @@ module.exports = function(app) {
 
   app.get('/getCategoria/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     categoria = new dbfun.Categorias();
-    categoria.query("SELECT * FROM `realmark`.`categorias` WHERE idCategoria=" + req.params.id + ";",
+    categoria.query("SELECT * FROM `comparie`.`categorias` WHERE idCategoria=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -199,7 +199,7 @@ module.exports = function(app) {
   app.post('/cadastrarMarca', function(req, res) {  /// Cadastra uma nova categoria
     marcas = new dbfun.Marcas();
 
-    marcas.query("INSERT INTO `realmark`.`marcas` (`nomeMarca`) VALUES('"
+    marcas.query("INSERT INTO `comparie`.`marcas` (`nomeMarca`) VALUES('"
       + req.body.nomeMarca +"');",
       function(err) {
         if(err){
@@ -229,7 +229,7 @@ module.exports = function(app) {
 
   app.get('/getMarca/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     marca = new dbfun.Marcas();
-    marca.query("SELECT * FROM `realmark`.`marcas` WHERE idMarca=" + req.params.id + ";",
+    marca.query("SELECT * FROM `comparie`.`marcas` WHERE idMarca=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -239,7 +239,7 @@ module.exports = function(app) {
   app.post('/cadastrarLoja', function(req, res) {  /// Cadastra uma nova loja
     lojas = new dbfun.Lojas();
 
-    lojas.query("INSERT INTO `realmark`.`lojas` (`nomeLoja`) VALUES('"
+    lojas.query("INSERT INTO `comparie`.`lojas` (`nomeLoja`) VALUES('"
       + req.body.nomeLoja + "');",
       function(err) {
         if(err){
@@ -269,7 +269,7 @@ module.exports = function(app) {
 
   app.get('/getLoja/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     loja = new dbfun.Lojas();
-    loja.query("SELECT * FROM `realmark`.`lojas` WHERE idLoja=" + req.params.id + ";",
+    loja.query("SELECT * FROM `comparie`.`lojas` WHERE idLoja=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -279,7 +279,7 @@ module.exports = function(app) {
   app.post('/cadastrarNicho', function(req, res) {  /// Cadastra um novo nicho
     nichos = new dbfun.Nichos();
 
-    nichos.query("INSERT INTO `realmark`.`nichos` (`nomeNicho`) VALUES('"
+    nichos.query("INSERT INTO `comparie`.`nichos` (`nomeNicho`) VALUES('"
       + req.body.nomeNicho +"');",
       function(err) {
         if(err){
@@ -309,7 +309,7 @@ module.exports = function(app) {
 
   app.get('/getNicho/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     nicho = new dbfun.Nichos();
-    nicho.query("SELECT * FROM `realmark`.`nichos` WHERE idNicho=" + req.params.id + ";",
+    nicho.query("SELECT * FROM `comparie`.`nichos` WHERE idNicho=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -319,7 +319,7 @@ module.exports = function(app) {
   app.post('/cadastrarTipo', function(req, res) {  /// Cadastra um novo nicho
     tipos = new dbfun.Tipos();
 
-    tipos.query("INSERT INTO `realmark`.`tipos` (`nomeTipo`) VALUES('"
+    tipos.query("INSERT INTO `comparie`.`tipos` (`nomeTipo`) VALUES('"
       + req.body.nomeTipo +"');",
       function(err) {
         if(err){
@@ -349,7 +349,7 @@ module.exports = function(app) {
 
   app.post('/cadastrarProdutoLoja', function(req, res) {  /// Cadastra um novo nicho
     produtolojas = new dbfun.ProdutoLoja();
-    produtolojas.query("INSERT INTO `realmark`.`produtoloja` (`idLoja`, `idProduto`, `link`, `preco`, `parcelas`, `quantidade`) VALUES('"
+    produtolojas.query("INSERT INTO `comparie`.`produtoloja` (`idLoja`, `idProduto`, `link`, `preco`, `parcelas`, `quantidade`) VALUES('"
       + req.body.idLoja + "','"
       + req.body.idProduto + "','"
       + req.body.link + "','"
@@ -374,7 +374,7 @@ module.exports = function(app) {
 
   app.put('/editarProdutoLoja/:idProduto/:idLoja', function(req, res) { /// Edita um obra a partir de seus dados
     produtoloja = new dbfun.ProdutoLoja(); /// Conexão com o banco
-    produtoloja.query("UPDATE `realmark`.`produtoloja` SET `quantidade` = '"+ req.body.quantidade
+    produtoloja.query("UPDATE `comparie`.`produtoloja` SET `quantidade` = '"+ req.body.quantidade
     +"',`preco` = '"+ req.body.preco
     +"',`parcelas` = '"+ req.body.parcelas
     +"',`estoque` = '"+ req.body.estoque
@@ -401,7 +401,7 @@ module.exports = function(app) {
 
   app.get('/getProdutoLoja/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     produtoloja = new dbfun.ProdutoLoja();
-    produtoloja.query("SELECT * FROM `realmark`.`produtoloja` WHERE idProduto=" + req.params.id + ";",
+    produtoloja.query("SELECT * FROM `comparie`.`produtoloja` WHERE idProduto=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -410,7 +410,7 @@ module.exports = function(app) {
 
   app.get('/getLojaProduto/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     produtoloja = new dbfun.ProdutoLoja();
-    produtoloja.query("SELECT * FROM `realmark`.`produtoloja` WHERE idLoja=" + req.params.id + ";",
+    produtoloja.query("SELECT * FROM `comparie`.`produtoloja` WHERE idLoja=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -419,7 +419,7 @@ module.exports = function(app) {
 
   app.post('/cadastrarProdutoCategoria', function(req, res) {  /// Cadastra um novo nicho
     produtocategorias = new dbfun.ProdutoCategoria();
-    produtocategorias.query("INSERT INTO `realmark`.`produtocategoria` (`idCategoria`, `idProduto`, `quantidade`) VALUES('"
+    produtocategorias.query("INSERT INTO `comparie`.`produtocategoria` (`idCategoria`, `idProduto`, `quantidade`) VALUES('"
       + req.body.idCategoria + "','"
       + req.body.idProduto + "','"
       + req.body.quantidade +"');",
@@ -440,7 +440,7 @@ module.exports = function(app) {
 
   app.put('/editarProdutoCategoria/:idProduto/:idCategoria', function(req, res) { /// Edita um obra a partir de seus dados
     produtocategoria = new dbfun.ProdutoCategoria(); /// Conexão com o banco
-    produtocategoria.query("UPDATE `realmark`.`produtocategoria` SET `quantidade` = '"+ req.body.quantidade
+    produtocategoria.query("UPDATE `comparie`.`produtocategoria` SET `quantidade` = '"+ req.body.quantidade
     +"'WHERE `idProduto` = '"+req.params.idProduto+"'AND `idCategoria` = '"+req.params.idCategoria+"';",  /// Atualiza os dados com a query do banco a patir do id
       function(err) { // Caso ocorra um erro
         if(err)
@@ -464,7 +464,7 @@ module.exports = function(app) {
 
   app.get('/getProdutoCategoria/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     produtocategoria = new dbfun.ProdutoCategoria();
-    produtocategoria.query("SELECT * FROM `realmark`.`produtocategoria` WHERE idProduto=" + req.params.id + ";",
+    produtocategoria.query("SELECT * FROM `comparie`.`produtocategoria` WHERE idProduto=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -473,7 +473,7 @@ module.exports = function(app) {
 
   app.get('/getCategoriaProduto/:id', function(req, res) { /// Retorna uma obra a partir de seu id
     produtocategoria = new dbfun.ProdutoCategoria();
-    produtocategoria.query("SELECT * FROM `realmark`.`produtocategoria` WHERE idCategoria=" + req.params.id + ";",
+    produtocategoria.query("SELECT * FROM `comparie`.`produtocategoria` WHERE idCategoria=" + req.params.id + ";",
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
@@ -482,7 +482,7 @@ module.exports = function(app) {
 
   app.post('/cadastrarTipoCategoria', function(req, res) {  /// Cadastra um novo nicho
     tipocategorias = new dbfun.TipoCategoria();
-    tipocategorias.query("INSERT INTO `realmark`.`tipocategoria` (`idTipo`, `idCategoria`) VALUES('"
+    tipocategorias.query("INSERT INTO `comparie`.`tipocategoria` (`idTipo`, `idCategoria`) VALUES('"
       + req.body.idTipo + "','"
       + req.body.idCategoria +"');",
       function(err) {
