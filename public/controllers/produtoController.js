@@ -57,7 +57,7 @@ angular.module('myApp')
 
             ProdutoServ.cadastrarProduto(produto).then(function(res) {
                 if(res.status) {
-                   // window.location.reload();
+                    window.location.reload();
                 } else {
                     console.log(res.message);
                 }
@@ -86,7 +86,7 @@ angular.module('myApp')
 
             ProdutoServ.cadastrarProdutoCategoria(produto).then(function(res){
                 if(res.status) {
-                    //window.location.reload();
+                    window.location.reload();
                     console.log('Cadastro na tabela relacionamento ProdutoCategoria realizado!');
                 } else {
                     console.log(res.message);
@@ -119,7 +119,7 @@ angular.module('myApp')
         if(!produto.quantidade){
             ProdutoServ.cadastrarProdutoLoja(produto).then(function(res){
                 if(res.status) {
-                   // window.location.reload();
+                    window.location.reload();
                     console.log('Cadastro na tabela relacionamento ProdutoLoja realizado!');
                 } else {
                     console.log(res.message);
@@ -131,7 +131,7 @@ angular.module('myApp')
             ProdutoServ.editarProdutoLoja(produto).then(function(res) {
                 // alert(res.message);
                 //window.sessionStorage.setItem('mensagem', res.message);
-               // window.location.reload();
+                window.location.reload();
                 console.log('Atualizado tabela relacionamento ProdutoLoja!');
                 
             });
@@ -143,7 +143,7 @@ angular.module('myApp')
         produto.cliques++;
         ProdutoServ.editarProdutoClique(produto).then(function(res) {
             if(res.status) {
-                //console.log('Cliques atualizado!');
+                console.log('Cliques atualizado!');
             } else {
                 console.log(res.message);
             }

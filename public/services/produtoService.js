@@ -81,7 +81,6 @@ angular.module('services',[])
             });
         },
         cadastrarProdutoLoja: function (data) {
-            console.log(data);
             return $http.post(baseUrl + '/cadastrarProdutoLoja', data).then(function (response) {
                 return response.data;
             });
