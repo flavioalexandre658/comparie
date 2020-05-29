@@ -1,5 +1,5 @@
     <div class="card-deck justify-content-center">
-        <div class="row card-conteudo" ng-mouseover="houverIn(produto.idProduto + idcard)" ng-mouseleave="houverOut(produto.idProduto + idcard)" dir-paginate="produto in listaproduto|itemsPerPage:qtditems" pagination-id="pagid">
+        <div class="row row-m-t card-conteudo" ng-mouseover="houverIn(produto.idProduto + idcard)" ng-mouseleave="houverOut(produto.idProduto + idcard)" dir-paginate="produto in listaproduto|itemsPerPage:qtditems" pagination-id="pagid">
                 <div class="card text-center mw-100" ng-mouseenter="infoProdutoLoja(produto)">
 
                     <carddeck-backdrop produto="produto" idcard="idcard" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></carddeck-backdrop>
