@@ -41,8 +41,8 @@ routes(app);
 // });
 
 var credentials = {
-  key: fs.readFileSync("my-api.key", "utf8"),
-  cert: fs.readFileSync("my-api.cert", "utf8")
+  key: fs.readFileSync("./my-api.key", "utf8"),
+  cert: fs.readFileSync("./my-api.cert", "utf8")
 };
 https
   .createServer(credentials, app)
