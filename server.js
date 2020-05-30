@@ -7,7 +7,7 @@ var fs = require("fs");
 var https = require("https");
 var mysql = require('mysql');
 var path = require('path');
-
+var helmet = require("helmet");
 app.use((req, res, next) => { //Cria um middleware onde todas as requests passam por ele 
     if (req.headers["x-forwarded-proto"] == "http") //Checa se o protocolo informado nos headers é HTTP 
         res.redirect(`https://${req.headers.host}${req.url}`); //Redireciona pra HTTPS 
