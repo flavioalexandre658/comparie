@@ -1,4 +1,4 @@
-<div class="col-11 col-md-11">
+<div class="col-12 col-md-12">
     <nav aria-label="breadcrumb" id="breadcumbSite">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Início</a></li>
@@ -25,41 +25,43 @@
             
             <div class="row">
 
-                <div class="col-2 col-md-2">
+                <div class="col-2 col-sm-2 justify-content-center">
                     <div class="col-12 col-md-12">
 
                         <div class="row titulo-painel">
                             <h5>Marcas</h5>
                         </div>
                         <!--DIV CONTROLA MENU DE CHECKBOX-->
-                        <di class = "row">
-                            <div class="custom-control">
-                                <label ng-repeat="marca in listaMarcasSelecionada">
+                        <div class = "row">
+                            <div class="col-12 col-md-12 custom-control" ng-repeat="marca in listaMarcasSelecionada">
+                                    <label>
                                     <input class="cb-marca" type="checkbox" ng-model="marca.selecionado" ng-change="defineMarca(marca, listaProdutosTipoClicado)">
                                     {{marca.nomeMarca}}</label>
                             </div>
-                        </di>
+                        </div>
 
                         <div class="row titulo-painel">
                             <h5>Preços</h5>
                         </div>
                         <!--DIV CONTROLA MENU DE CHECKBOX-->
-                        <di class = "row">
-                            <div class="custom-control">
-                                <label ng-repeat="preco in faixasPreco">
+                        <div class = "row">
+                            <div class="col-12 col-md-12 custom-control" ng-repeat="preco in faixasPreco">
+                                <label>
                                     <input class="cb-preco" type="checkbox" ng-model="preco.selecionado" ng-change="definePreco(preco, listaProdutosTipoClicado)">
                                     R${{preco.preco1}} até R${{preco.preco2}}</label>
                             </div>
-                        </di>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-10 col-md-10">
+                <div class="col-10 col-sm-10 justify-content-center">
 
                     <div class="col-12 col-md-12">
+
                         <div class="row titulo-sugestao">
                             <h6>Pesquisa rápida</h6>
                         </div>
+
                         <!--DIV CONTROLA MENU DE PILLS-->
                         <div class="row">
                             <ul class="nav nav-pills mb-3" id="myTab" role="tablist">
@@ -68,11 +70,12 @@
                                 </li>
                             </ul>
                         </div>
+
                     </div>
 
                     <div class="tab-content reveall" id="pills-tabContent">
                         <!--DIV REFERENTE AO MENU DE PILLS-->
-                        <div class="tab-pane fade show active justify-content-center" role="tabpanel" aria-labelledby="{{filtro.nomeFiltro}}-tab" id="pillespecifico">
+                        <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{filtro.nomeFiltro}}-tab" id="pillespecifico">
                             <carddeck-produto  ng-if="filtro.nomeFiltro.toLowerCase() != 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosSelecionada" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
                             <carddeck-produto  ng-if="filtro.nomeFiltro.toLowerCase() == 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosTipoClicado" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
                         </div>

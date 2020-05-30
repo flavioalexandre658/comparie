@@ -261,8 +261,9 @@ angular.module('myApp')
     //Verifica se ja contem a faixa de preço no array (evita ter mesma faixa repetida)
     let verificaFaixaPreco = function(array,value){
         let contem = false;
+        console.log(array)
         array.forEach(function(element){
-            if(element.preco2 <= value)
+            if(element.preco2 == value)
             {
                 contem = true;
             }
@@ -275,7 +276,7 @@ angular.module('myApp')
         let faixas = [];
         for(let i=0;i<listaProdutoLoja.length;i++){
             let preco = convertePreco(listaProdutoLoja[i].preco);
-            if(preco >= 600 && preco <= 1500 && verificaFaixaPreco(faixas, 1500) == false){
+            if(preco > 600 && preco <= 1500 && verificaFaixaPreco(faixas, 1500) == false){
                 faixas.push({preco1:600, preco2:1500});
             }else if(preco > 1500 && preco <= 2500 && verificaFaixaPreco(faixas, 2500) == false){
                 faixas.push({preco1:1500, preco2:2500});
@@ -285,6 +286,9 @@ angular.module('myApp')
                 faixas.push({preco1:3500, preco2:5000});
             }
         }
+        faixas = faixas.sort(function(a,b){ // Ordena a lista de forma crescente
+            return a.preco1 - b.preco1;
+        })
         return faixas;
     }
 }])
