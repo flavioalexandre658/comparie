@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./routes');
 var cors = require("cors");
+var fs = require("fs");
+var https = require("https");
 var mysql = require('mysql');
 var path = require('path');
-
 
 app.use((req, res, next) => { //Cria um middleware onde todas as requests passam por ele 
     if (req.headers["x-forwarded-proto"] == "http") //Checa se o protocolo informado nos headers é HTTP 
@@ -13,6 +14,8 @@ app.use((req, res, next) => { //Cria um middleware onde todas as requests passam
     else //Se a requisição já é HTTPS 
         next(); //Não precisa redirecionar, passa para os próximos middlewares que servirão com o conteúdo desejado 
 });
+
+app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,7 +40,12 @@ routes(app);
 //     console.log('Rodando porta' + process.env.PORT_APP);
 // });
 
-
-app.listen(3000, function() {
-  console.log('Rodando porta 3000');
-});
+var credentials = {
+  key: fs.readFileSync("my-api.key", "utf8"),
+  cert: fs.readFileSync("my-api.cert", "utf8")
+};
+https
+  .createServer(credentials, app)
+  .listen(3000, function() {
+    console.log('Rodando porta 3000');
+  });
