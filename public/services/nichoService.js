@@ -2,7 +2,7 @@ angular.module('services')
 .factory('NichoServ', ['$http', function ($http,$httpProvider) {
 
     //var baseUrl = "http://localhost:3000";     // Para desenvolvimento - uso local
-    var baseUrl = "http://comparie.com.br";// Para LINK externo - mandar sempre esse para develop
+    var baseUrl = "https://comparie.com.br";// Para LINK externo - mandar sempre esse para develop
 
     return {
         cadastrarNicho: function (data) {
