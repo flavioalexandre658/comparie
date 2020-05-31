@@ -70,11 +70,20 @@
             <form class="form-m-t-p">
                 <div class="row">
                     <div class="offset-md-3 col-6 col-md-6">
+
+                        <div class="form-group">
+                            <label for="nomeTipo">Tipo do produto</label>
+                            <select class="form-control" id="nomeTipo"  ng-model="tipo.idTipo" required>
+                                <option value="">Tipo</option>
+                                <option  ng-repeat="tipo in listaTipos" ng-value="tipo.idTipo">{{tipo.nomeTipo}}</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label for="">Produto</label>
                             <select class="form-control" id="idProduto" ng-model="produto.idProduto" required>
                                 <option value="">Produto</option>
-                                <option  ng-repeat="produto in listaProdutos" ng-value="produto.idProduto">{{produto.nomeProduto}}</option>
+                                <option  ng-repeat="produto in listaProdutos|filter:tipo" ng-value="produto.idProduto">{{produto.nomeProduto}}</option>
                             </select>
                         </div>
 
@@ -112,11 +121,20 @@
             <form class="form-m-t-p">
                 <div class="row">
                     <div class="offset-md-3 col-6 col-md-6">
+
+                        <div class="form-group">
+                            <label for="nomeTipo">Tipo do produto</label>
+                            <select class="form-control" id="nomeTipo"  ng-model="tipo.idTipo" required>
+                                <option value="">Tipo</option>
+                                <option  ng-repeat="tipo in listaTipos" ng-value="tipo.idTipo">{{tipo.nomeTipo}}</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label for="">Produto</label>
                             <select class="form-control" id="idProduto" ng-model="produto.idProduto" required>
                                 <option value="">Produto</option>
-                                <option  ng-repeat="produto in listaProdutos" ng-value="produto.idProduto">{{produto.nomeProduto}}</option>
+                                <option  ng-repeat="produto in listaProdutos|filter:tipo" ng-value="produto.idProduto">{{produto.nomeProduto}}</option>
                             </select>
                         </div>
 
@@ -124,7 +142,7 @@
                             <label for="categoriaProduto">Categoria</label>
                             <select class="form-control" id="categoriaProduto" ng-model="categoria.idCategoria" required>
                                 <option value="">Categoria</option>
-                                <option  ng-repeat="categoria in listaCategorias" ng-value="categoria.idCategoria">{{categoria.nomeCategoria}}</option>
+                                <option  ng-repeat="tipocategoria in listaTipoCategorias|filter:tipo" ng-value="tipocategoria.idCategoria">{{listaCategorias[tipocategoria.idCategoria-1].nomeCategoria}}</option>
                             </select>
                         </div>
 

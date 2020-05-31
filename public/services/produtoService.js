@@ -129,6 +129,11 @@ angular.module('services',[])
             return $http.get(baseUrl + '/getCategoriaProduto/' + data['idCategoria']).then(function (response) {
                 return response.data;
             });
+        },
+        getTipoCategorias: function () {
+            return $http.get(baseUrl + '/getTipoCategorias/').then(function (response) {
+                return response.data;
+            });
         }
 
     };

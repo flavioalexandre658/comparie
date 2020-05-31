@@ -46,7 +46,7 @@ insert into `comparie`.`nichos` values
 (null, 'Eletrodomésticos'),
 (null, 'Informática'),
 (null, 'Eletroportáteis'),
-(null, 'Tablets');
+(null, 'Video Games');
 
 create table tipos(
     idTipo int auto_increment,

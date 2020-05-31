@@ -17,7 +17,9 @@ angular.module('myApp')
     });
 
     ProdutoServ.getCategorias().then(function(data) {
-        $scope.listaCategorias = data;
+        $scope.listaCategorias = data.sort(function(a,b){ // Ordena a lista de forma crescente
+            return a.idCategoria - b.idCategoria;
+        })
     });
 
     ProdutoServ.getMarcas().then(function(data) {
@@ -42,6 +44,12 @@ angular.module('myApp')
 
     ProdutoServ.getProdutoLojas().then(function(data) {
         $scope.listaProdutoLojas = data;
+    });
+
+    ProdutoServ.getTipoCategorias().then(function(data) {
+        $scope.listaTipoCategorias = data.sort(function(a,b){ // Ordena a lista de forma crescente
+            return a.idCategoria - b.idCategoria;
+        })
     });
 
     $scope.cadastrarProduto = function() {
@@ -151,5 +159,4 @@ angular.module('myApp')
                 console.log(err)
         });
     };
-
 }])
