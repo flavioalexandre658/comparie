@@ -29,11 +29,11 @@ module.exports = function(app) {
             // Passo 3
             // Manipulando o seletor específico para montar nossa estrutura
             // Escolhi não selecionar a primeira linha porque faz parte do header da tabela
+            let preco,parcelas;
             if(nomeloja[1] == 'magazinevoce'){
               $('.pdetailpage').each(function(i) {
                   // Obtendo as propriedades da tabela. 
                   // O método .trim() garante que irá remover espaço em branco
-                  let preco,parcelas;
                     preco = $(this).find('strong').eq(0).text().trim();
                     $('.p-installment').each(function(i){
                         parcelas = $(this).find('span').eq(0).text().trim();
@@ -51,20 +51,20 @@ module.exports = function(app) {
                   $('.installment-wrapper').each(function(i){
                       parcelas = $(this).find('p').eq(0).text().trim();
                   })
-                  res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
-              /*if(preco == '' || preco == undefined || preco == null){
-                $('.price__SalesPrice-ej7lo8-2 kjGSBk TextUI-sc-12tokcy-0 bLZSPZ').each(function(i) {
+              if(preco == '' || preco == undefined || preco == null){
+                $('.price__SalesPrice-ej7lo8-2').each(function(i) {
                   // Obtendo as propriedades da tabela. 
                   // O método .trim() garante que irá remover espaço em branco
                     preco = $(this).text().trim();
-                    $('.price__Installment-ej7lo8-3 jiPbX TextUI-sc-12tokcy-0 bLZSPZ').each(function(i){
+                    $('.price__Installment-ej7lo8-3').each(function(i){
                         parcelas = $(this).find('span').eq(0).text().trim();
                         parcelas = parcelas + $(this).find('span').eq(1).text();
                     })
                 });
-              }*/
+              }
               // Inserindo os dados obtidos no nosso objeto
+              res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
             }else if(nomeloja[1] == 'amazon'){
               $('#priceblock_ourprice').each(function(i) {
                 // Obtendo as propriedades da tabela. 

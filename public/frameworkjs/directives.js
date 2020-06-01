@@ -74,7 +74,7 @@ angular.module('directives',[])
           TipoServ.getPrecoSite(produtoloja_).then(function(data) {
               for(let i=0; i < produtoloja.length;i++){
                 if(produtoloja[i].idLoja == data[0].idLoja){
-                  if(data[0].preco == ""){
+                  if(data[0].preco == '' || data[0].preco == undefined || data[0].preco == null){
                     produtoloja[i].estoque = 0;
                     ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
                       console.log('Produto atualizado!');
