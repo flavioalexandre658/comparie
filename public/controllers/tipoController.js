@@ -261,7 +261,6 @@ angular.module('myApp')
     //Verifica se ja contem a faixa de preço no array (evita ter mesma faixa repetida)
     let verificaFaixaPreco = function(array,value){
         let contem = false;
-        console.log(array)
         array.forEach(function(element){
             if(element.preco2 == value)
             {

@@ -25,7 +25,6 @@ module.exports = function(app) {
     request(url, function(error, response, html) {
         if (!error) {
             let $ = cheerio.load(html);
-        
             // Objeto que irá armazenar a tabela
             // Passo 3
             // Manipulando o seletor específico para montar nossa estrutura

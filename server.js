@@ -14,7 +14,8 @@ const dbfun = require('./db');
 
 //Permite Acesso externo na aplicação
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "https://comparie.com.br/");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000/");
   res.header("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With,x-access-token, Content-Type, Accept");
   next();
