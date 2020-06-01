@@ -44,18 +44,28 @@ module.exports = function(app) {
                   res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
             }else if(nomeloja[1] == 'americanas'){
+              let preco,parcelas;
               $('.main-price').each(function(i) {
                 // Obtendo as propriedades da tabela. 
                 // O método .trim() garante que irá remover espaço em branco
-                let preco,parcelas;
                   preco = $(this).find('span').eq(0).text().trim();
                   $('.installment-wrapper').each(function(i){
                       parcelas = $(this).find('p').eq(0).text().trim();
                   })
-                
-                // Inserindo os dados obtidos no nosso objeto
-                res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
+                  res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
+              /*if(preco == '' || preco == undefined || preco == null){
+                $('.price__SalesPrice-ej7lo8-2 kjGSBk TextUI-sc-12tokcy-0 bLZSPZ').each(function(i) {
+                  // Obtendo as propriedades da tabela. 
+                  // O método .trim() garante que irá remover espaço em branco
+                    preco = $(this).text().trim();
+                    $('.price__Installment-ej7lo8-3 jiPbX TextUI-sc-12tokcy-0 bLZSPZ').each(function(i){
+                        parcelas = $(this).find('span').eq(0).text().trim();
+                        parcelas = parcelas + $(this).find('span').eq(1).text();
+                    })
+                });
+              }*/
+              // Inserindo os dados obtidos no nosso objeto
             }else if(nomeloja[1] == 'amazon'){
               $('#priceblock_ourprice').each(function(i) {
                 // Obtendo as propriedades da tabela. 
