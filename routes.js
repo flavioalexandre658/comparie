@@ -59,7 +59,6 @@ module.exports = function(app) {
                     preco = $(this).text().trim();
                     $('.price__Installment-ej7lo8-3').each(function(i){
                         parcelas = $(this).find('span').eq(0).text().trim();
-                        parcelas = parcelas + $(this).find('span').eq(1).text();
                     })
                 });
               }

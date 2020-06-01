@@ -12,32 +12,32 @@ angular.module('directives',[])
 
           let produtoloja_ = {};
           for(let i=0;i<produtoloja.length;i++){
-          produtoloja_.link = encodeURIComponent(produtoloja[i].link);
-          produtoloja_.idProduto = produtoloja[i].idProduto;
-          produtoloja_.idLoja = produtoloja[i].idLoja;
-          TipoServ.getPrecoSite(produtoloja_).then(function(data) {
-              for(let i=0; i < produtoloja.length;i++){
-                if(produtoloja[i].idLoja == data[0].idLoja){
-                  if(data[0].preco == ""){
-                    produtoloja[i].estoque = 0;
-                    ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                      console.log('Produto atualizado!');
-                    });
-                  }else{
-                    let precoloja = data[0].preco.split('$')[1];
-                        precoloja = precoloja.replace(/\s/g, '');
-                    if(produtoloja[i].preco != precoloja || produtoloja[i].estoque != 1){
-                        produtoloja[i].preco = precoloja;
-                        produtoloja[i].estoque = 1;
-                        produtoloja[i].parcelas = data[0].parcelas;
-                        ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                          console.log('Produto atualizado!');
-                        });
+            produtoloja_.link = encodeURIComponent(produtoloja[i].link);
+            produtoloja_.idProduto = produtoloja[i].idProduto;
+            produtoloja_.idLoja = produtoloja[i].idLoja;
+            TipoServ.getPrecoSite(produtoloja_).then(function(data) {
+                for(let i=0; i < produtoloja.length;i++){
+                  if(produtoloja[i].idLoja == data[0].idLoja){
+                    if(data[0].preco == '' || data[0].preco == undefined || data[0].preco == null){
+                      produtoloja[i].estoque = 0;
+                      ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
+                        console.log('Produto atualizado!');
+                      });
+                    }else{
+                      let precoloja = data[0].preco.split('$')[1];
+                          precoloja = precoloja.replace(/\s/g, '');
+                      if(produtoloja[i].preco != precoloja || produtoloja[i].estoque != 1){
+                          produtoloja[i].preco = precoloja;
+                          produtoloja[i].estoque = 1;
+                          produtoloja[i].parcelas = data[0].parcelas.split(/\s/g)[2];
+                          ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
+                            console.log('Produto atualizado!');
+                          });
+                      }
                     }
                   }
                 }
-              }
-          });
+            });
           }
         }
         
@@ -68,32 +68,32 @@ angular.module('directives',[])
 
           let produtoloja_ = {};
           for(let i=0;i<produtoloja.length;i++){
-          produtoloja_.link = encodeURIComponent(produtoloja[i].link);
-          produtoloja_.idProduto = produtoloja[i].idProduto;
-          produtoloja_.idLoja = produtoloja[i].idLoja;
-          TipoServ.getPrecoSite(produtoloja_).then(function(data) {
-              for(let i=0; i < produtoloja.length;i++){
-                if(produtoloja[i].idLoja == data[0].idLoja){
-                  if(data[0].preco == '' || data[0].preco == undefined || data[0].preco == null){
-                    produtoloja[i].estoque = 0;
-                    ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                      console.log('Produto atualizado!');
-                    });
-                  }else{
-                    let precoloja = data[0].preco.split('$')[1];
-                        precoloja = precoloja.replace(/\s/g, '');
-                    if(produtoloja[i].preco != precoloja || produtoloja[i].estoque != 1){
-                        produtoloja[i].preco = precoloja;
-                        produtoloja[i].estoque = 1;
-                        produtoloja[i].parcelas = data[0].parcelas;
-                        ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                          console.log('Produto atualizado!');
-                        });
+            produtoloja_.link = encodeURIComponent(produtoloja[i].link);
+            produtoloja_.idProduto = produtoloja[i].idProduto;
+            produtoloja_.idLoja = produtoloja[i].idLoja;
+            TipoServ.getPrecoSite(produtoloja_).then(function(data) {
+                for(let i=0; i < produtoloja.length;i++){
+                  if(produtoloja[i].idLoja == data[0].idLoja){
+                    if(data[0].preco == '' || data[0].preco == undefined || data[0].preco == null){
+                      produtoloja[i].estoque = 0;
+                      ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
+                        console.log('Produto atualizado!');
+                      });
+                    }else{
+                      let precoloja = data[0].preco.split('$')[1];
+                          precoloja = precoloja.replace(/\s/g, '');
+                      if(produtoloja[i].preco != precoloja || produtoloja[i].estoque != 1){
+                          produtoloja[i].preco = precoloja;
+                          produtoloja[i].estoque = 1;
+                          produtoloja[i].parcelas = data[0].parcelas;
+                          ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
+                            console.log('Produto atualizado!');
+                          });
+                      }
                     }
                   }
                 }
-              }
-          });
+            });
           }
         }
         $scope.houverIn = function(id){
