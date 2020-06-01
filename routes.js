@@ -79,7 +79,9 @@ module.exports = function(app) {
               });
             }
             
-        }
+        }else{
+          console.log('Printing Error: '+ error);
+      }
     })
   })
 
