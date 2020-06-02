@@ -21,7 +21,7 @@ angular.module('directives',[])
                     if(data[0].preco == '' || data[0].preco == undefined || data[0].preco == null){
                       produtoloja[i].estoque = 0;
                       ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                        console.log('Produto atualizado!');
+                        //console.log('Produto atualizado!');
                       });
                     }else{
                       let precoloja = data[0].preco.split('$')[1];
@@ -31,7 +31,7 @@ angular.module('directives',[])
                           produtoloja[i].estoque = 1;
                           produtoloja[i].parcelas = data[0].parcelas.split(/\s/g)[2];
                           ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                            console.log('Produto atualizado!');
+                            //console.log('Produto atualizado!');
                           });
                       }
                     }
@@ -77,7 +77,7 @@ angular.module('directives',[])
                     if(data[0].preco == '' || data[0].preco == undefined || data[0].preco == null){
                       produtoloja[i].estoque = 0;
                       ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                        console.log('Produto atualizado!');
+                        //console.log('Produto atualizado!');
                       });
                     }else{
                       let precoloja = data[0].preco.split('$')[1];
@@ -87,7 +87,7 @@ angular.module('directives',[])
                           produtoloja[i].estoque = 1;
                           produtoloja[i].parcelas = data[0].parcelas;
                           ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                            console.log('Produto atualizado!');
+                            //console.log('Produto atualizado!');
                           });
                       }
                     }
