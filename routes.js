@@ -42,7 +42,7 @@ module.exports = function(app) {
                   // Inserindo os dados obtidos no nosso objeto
                   res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
-            }else if(nomeloja[1] == 'americanas' || nomeloja[1] == 'submarino'){
+            }else if(nomeloja[1] == 'americanas'){
               $('.main-price').each(function(i) {
                 // Obtendo as propriedades da tabela. 
                 // O método .trim() garante que irá remover espaço em branco
@@ -74,7 +74,27 @@ module.exports = function(app) {
                 // Inserindo os dados obtidos no nosso objeto
                 res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
-            }
+            }else if(nomeloja[1] == 'submarino'){
+              $('.main-price').each(function(i) {
+                // Obtendo as propriedades da tabela. 
+                // O método .trim() garante que irá remover espaço em branco
+                  preco = $(this).find('span').eq(0).text().trim();
+                  $('.installment-wrapper').each(function(i){
+                      parcelas = $(this).find('p').eq(0).text().trim();
+                  })
+              });
+              if(preco == '' || preco == undefined || preco == null){
+                $('.sales-price').each(function(i) {
+                  // Obtendo as propriedades da tabela. 
+                  // O método .trim() garante que irá remover espaço em branco
+                    preco = $(this).text().trim();
+                    $('.payment-option').each(function(i){
+                        parcelas = $(this).text().trim();
+                    })
+                });
+              }
+              // Inserindo os dados obtidos no nosso objeto
+              res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
             
         }else{
             console.log(error);
