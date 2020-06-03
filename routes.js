@@ -42,7 +42,7 @@ module.exports = function(app) {
                   // Inserindo os dados obtidos no nosso objeto
                   res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
-            }else if(nomeloja[1] == 'americanas' || nomeloja[1] == 'submarino'){
+            }else if(nomeloja[1] == 'americanas'){
               $('.main-price').each(function(i) {
                 // Obtendo as propriedades da tabela. 
                 // O método .trim() garante que irá remover espaço em branco
@@ -73,8 +73,14 @@ module.exports = function(app) {
                   parcelas = $(this).find('span').eq(0).text().trim();
                 })
                 // Inserindo os dados obtidos no nosso objeto
-                res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
+              if(preco == '' || preco == undefined || preco == null){
+                $('#olp-upd-new').each(function(i) {
+                  preco = $(this).find('span').eq(0).text().trim();
+                  parcelas = "1x no cartão de crédito";
+                })
+              }
+              res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
             }else if(nomeloja[1] == 'submarino'){
               $('.main-price').each(function(i) {
                 // Obtendo as propriedades da tabela. 
@@ -85,11 +91,11 @@ module.exports = function(app) {
                   })
               });
               if(preco == '' || preco == undefined || preco == null){
-                $('.main-offer__SalesPrice-sc-1oo1w8r-1').each(function(i) {
+                $('.main-offer__ParagraphUI-sc-1oo1w8r-0').each(function(i) {
                   // Obtendo as propriedades da tabela. 
                   // O método .trim() garante que irá remover espaço em branco
-                    preco = $(this).text().trim();
-                    $('.payment-option-rate').each(function(i){
+                    preco = $(this).find('span').eq(0).text().trim();
+                    $('.payment-option').each(function(i){
                         parcelas = $(this).text().trim();
                     })
                 });

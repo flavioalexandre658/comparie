@@ -2,7 +2,7 @@
     <div class="row-m-t card-deck col-6 col-lg-{{col}}" ng-controller="homeController"  ng-mouseover="houverIn(produto.idProduto + idcard, onMobile)" ng-mouseleave="houverOut(produto.idProduto + idcard, onMobile)"  dir-paginate="produto in listaproduto|filter:buscafilter|itemsPerPage:qtditems" pagination-id="pagid">
         <div class="card text-center mw-100" ng-mouseenter="infoProdutoLoja(produto)">
 
-            <carddeck-backdrop produto="produto" idcard="idcard" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></carddeck-backdrop>
+                <carddeck-backdrop produto="produto" idcard="idcard" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></carddeck-backdrop>
 
                 <div class="container-fluid shadow-sm p-3 mb-5 bg-white" id="container-img-card">
                     <div class="row">
