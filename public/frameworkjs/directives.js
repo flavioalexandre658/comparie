@@ -41,7 +41,7 @@ angular.module('directives',[])
           }
         }
         
-        $scope.cliqueVerLojas = function(id){
+        $scope.cliqueVerLojas = function(id, onMobile){
           if(onMobile){
             $("#"+id+"-cardreview").show();
             $("#"+id+"-backdrop").removeClass('card-backdrop fade');
@@ -106,7 +106,7 @@ angular.module('directives',[])
             });
           }
         }
-        $scope.cliqueVerLojas = function(id){
+        $scope.cliqueVerLojas = function(id, onMobile){
           if(onMobile){
             $("#"+id+"-cardreview").show();
             $("#"+id+"-backdrop").removeClass('card-backdrop fade');
