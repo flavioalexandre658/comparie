@@ -41,10 +41,20 @@ angular.module('directives',[])
           }
         }
         
-        $scope.houverIn = function(id){
+        $scope.cliqueVerLojas = function(id){
+          if(onMobile){
             $("#"+id+"-cardreview").show();
             $("#"+id+"-backdrop").removeClass('card-backdrop fade');
             $("#"+id+"-backdrop").addClass('card-backdrop show');
+          }
+        };
+
+        $scope.houverIn = function(id){
+          if(!onMobile){
+            $("#"+id+"-cardreview").show();
+            $("#"+id+"-backdrop").removeClass('card-backdrop fade');
+            $("#"+id+"-backdrop").addClass('card-backdrop show');
+          }
         };
     
         $scope.houverOut = function(id){
@@ -96,16 +106,26 @@ angular.module('directives',[])
             });
           }
         }
-        $scope.houverIn = function(id){
+        $scope.cliqueVerLojas = function(id){
+          if(onMobile){
             $("#"+id+"-cardreview").show();
             $("#"+id+"-backdrop").removeClass('card-backdrop fade');
             $("#"+id+"-backdrop").addClass('card-backdrop show');
+          }
+        };
+
+        $scope.houverIn = function(id){
+          if(!onMobile){
+            $("#"+id+"-cardreview").show();
+            $("#"+id+"-backdrop").removeClass('card-backdrop fade');
+            $("#"+id+"-backdrop").addClass('card-backdrop show');
+          }
         };
     
         $scope.houverOut = function(id){
-            $("#"+id+"-cardreview").hide();
-            $("#"+id+"-backdrop").removeClass('card-backdrop show');
-            $("#"+id+"-backdrop").addClass('card-backdrop fade');
+          $("#"+id+"-cardreview").hide();
+          $("#"+id+"-backdrop").removeClass('card-backdrop show');
+          $("#"+id+"-backdrop").addClass('card-backdrop fade');
         };
       }
     };

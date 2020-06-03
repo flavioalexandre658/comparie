@@ -42,7 +42,7 @@ module.exports = function(app) {
                   // Inserindo os dados obtidos no nosso objeto
                   res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
-            }else if(nomeloja[1] == 'americanas'){
+            }else if(nomeloja[1] == 'americanas' || nomeloja[1] == 'submarino'){
               $('.main-price').each(function(i) {
                 // Obtendo as propriedades da tabela. 
                 // O método .trim() garante que irá remover espaço em branco
@@ -68,6 +68,7 @@ module.exports = function(app) {
                 // Obtendo as propriedades da tabela. 
                 // O método .trim() garante que irá remover espaço em branco
                 preco = $(this).text().trim();
+
                 $('#installmentCalculator_feature_div').each(function(i){
                   parcelas = $(this).find('span').eq(0).text().trim();
                 })
@@ -84,18 +85,18 @@ module.exports = function(app) {
                   })
               });
               if(preco == '' || preco == undefined || preco == null){
-                $('.sales-price').each(function(i) {
+                $('.main-offer__SalesPrice-sc-1oo1w8r-1').each(function(i) {
                   // Obtendo as propriedades da tabela. 
                   // O método .trim() garante que irá remover espaço em branco
                     preco = $(this).text().trim();
-                    $('.payment-option').each(function(i){
+                    $('.payment-option-rate').each(function(i){
                         parcelas = $(this).text().trim();
                     })
                 });
               }
               // Inserindo os dados obtidos no nosso objeto
               res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
-            
+            }
         }else{
             console.log(error);
         }
