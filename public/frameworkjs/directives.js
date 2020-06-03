@@ -49,7 +49,7 @@ angular.module('directives',[])
           }
         };
 
-        $scope.houverIn = function(id){
+        $scope.houverIn = function(id, onMobile){
           if(!onMobile){
             $("#"+id+"-cardreview").show();
             $("#"+id+"-backdrop").removeClass('card-backdrop fade');
@@ -114,7 +114,7 @@ angular.module('directives',[])
           }
         };
 
-        $scope.houverIn = function(id){
+        $scope.houverIn = function(id, onMobile){
           if(!onMobile){
             $("#"+id+"-cardreview").show();
             $("#"+id+"-backdrop").removeClass('card-backdrop fade');
@@ -143,18 +143,6 @@ angular.module('directives',[])
       scope:{ produto: '=', idcard: '=', listaloja: '=', listaprodutolojas: '=' },
       templateUrl: '../directives/card-deck-backdrop.html',
       controller: function($scope, TipoServ, ProdutoServ) {  
-
-        $scope.houverIn = function(id){
-          $("#"+id+"-cardreview").show();
-          $("#"+id+"-backdrop").removeClass('card-backdrop fade');
-          $("#"+id+"-backdrop").addClass('card-backdrop show');
-      };
-  
-      $scope.houverOut = function(id){
-          $("#"+id+"-cardreview").hide();
-          $("#"+id+"-backdrop").removeClass('card-backdrop show');
-          $("#"+id+"-backdrop").addClass('card-backdrop fade');
-      };
       }
   }
 })

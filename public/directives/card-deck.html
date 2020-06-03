@@ -1,5 +1,5 @@
     <div class="card-deck justify-content-center">
-        <div class="row row-m-t card-conteudo" ng-mouseover="houverIn(produto.idProduto + idcard)" ng-mouseleave="houverOut(produto.idProduto + idcard)" dir-paginate="produto in listaproduto|itemsPerPage:qtditems" pagination-id="pagid">
+        <div class="row row-m-t card-conteudo" ng-controller="homeController" ng-mouseover="houverIn(produto.idProduto + idcard, onMobile)" ng-mouseleave="houverOut(produto.idProduto + idcard, onMobile)" dir-paginate="produto in listaproduto|itemsPerPage:qtditems" pagination-id="pagid">
                 <div class="card text-center mw-100" ng-mouseenter="infoProdutoLoja(produto)">
 
                     <carddeck-backdrop produto="produto" idcard="idcard" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></carddeck-backdrop>
@@ -25,7 +25,7 @@
                         <p class="avista">à vista</p>
                     </div>
                     
-                    <div class="card-footer bg-transparent border-0" ng-show="onMobile" ng-controller="homeController">
+                    <div class="card-footer bg-transparent border-0" ng-show="onMobile">
                         <!-- <button ng-click="showModal(produto.idProduto)" type="button"class="btn btn-outline-primary" data-toggle="modal" id="lojasComProduto">Ver Lojas</button>
                         <modal-produto produto="produto" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></modal-produto>-->
                         <button type="button"class="btn btn-outline-primary" ng-click="cliqueVerLojas(produto.idProduto + idcard, onMobile)">Ver Lojas</button>
