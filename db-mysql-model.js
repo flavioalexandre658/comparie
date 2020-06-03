@@ -5,6 +5,17 @@ let mysql = require('mysql');
 let createConnection  = function () {
 	
     // Uses node-mysql to establish connection with database
+	/*let pool = mysql.createPool({
+        host: 'localhost', // localhost
+        user: 'root',//'root',
+        password: '',//
+        database: 'comparie',//realmark
+        connectionLimit : 1000,
+        connectTimeout  : 60 * 60 * 1000,
+        aquireTimeout   : 60 * 60 * 1000,
+        timeout         : 60 * 60 * 1000,
+	});*/
+	
 	let pool = mysql.createPool({
         host: 'mysql669.umbler.com', // localhost
         user: 'comparie',//'root',

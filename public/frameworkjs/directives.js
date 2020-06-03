@@ -29,7 +29,7 @@ angular.module('directives',[])
                       if(produtoloja[i].preco != precoloja || produtoloja[i].estoque != 1){
                           produtoloja[i].preco = precoloja;
                           produtoloja[i].estoque = 1;
-                          produtoloja[i].parcelas = data[0].parcelas.split(/\s/g)[2];
+                          produtoloja[i].parcelas = data[0].parcelas;
                           ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
                             //console.log('Produto atualizado!');
                           });

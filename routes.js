@@ -21,7 +21,7 @@ module.exports = function(app) {
       idProduto = req.params.idProduto,
       idLoja = req.params.idLoja;
     const nomeloja = link.split('.');
-    url = link;
+    url = link.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     request(url, function(error, response, html) {
         if (!error) {
             let $ = cheerio.load(html);
@@ -42,8 +42,7 @@ module.exports = function(app) {
                   // Inserindo os dados obtidos no nosso objeto
                   res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
-            }else if(nomeloja[1] == 'americanas'){
-              let preco,parcelas;
+            }else if(nomeloja[1] == 'americanas' || nomeloja[1] == 'submarino'){
               $('.main-price').each(function(i) {
                 // Obtendo as propriedades da tabela. 
                 // O método .trim() garante que irá remover espaço em branco
@@ -65,23 +64,21 @@ module.exports = function(app) {
               // Inserindo os dados obtidos no nosso objeto
               res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
             }else if(nomeloja[1] == 'amazon'){
-              $('#priceblock_ourprice').each(function(i) {
+              $('#price_inside_buybox').each(function(i) {
                 // Obtendo as propriedades da tabela. 
                 // O método .trim() garante que irá remover espaço em branco
-                let preco,parcelas;
-                  preco = $(this).text().trim();
-                  $('#installmentCalculator_feature_div').each(function(i){
-                      parcelas = $(this).find('span').eq(0).text().trim();
-                  })
-                
+                preco = $(this).text().trim();
+                $('#installmentCalculator_feature_div').each(function(i){
+                  parcelas = $(this).find('span').eq(0).text().trim();
+                })
                 // Inserindo os dados obtidos no nosso objeto
                 res.json([{preco: preco, parcelas: parcelas, idProduto: idProduto, idLoja: idLoja}]);
               });
             }
             
         }else{
-          console.log('Printing Error: '+ error);
-      }
+            console.log(error);
+        }
     })
   })
 
@@ -152,7 +149,7 @@ module.exports = function(app) {
     produtos.query("SELECT * FROM produtos;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
+      
       res.json(rows);
     });
   });
@@ -192,7 +189,6 @@ module.exports = function(app) {
     categorias.query("SELECT * FROM categorias;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
       res.json(rows);
     });
   });
@@ -232,7 +228,6 @@ module.exports = function(app) {
     marcas.query("SELECT * FROM marcas;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
       res.json(rows);
     });
   });
@@ -272,7 +267,6 @@ module.exports = function(app) {
     lojas.query("SELECT * FROM lojas;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
       res.json(rows);
     });
   });
@@ -312,7 +306,6 @@ module.exports = function(app) {
     nichos.query("SELECT * FROM nichos;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
       res.json(rows);
     });
   });
@@ -352,7 +345,6 @@ module.exports = function(app) {
     tipos.query("SELECT * FROM tipos;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
       res.json(rows);
     });
   });
@@ -404,7 +396,6 @@ module.exports = function(app) {
     produtolojas.query("SELECT * FROM produtoloja;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
       res.json(rows);
     });
   });
@@ -467,7 +458,6 @@ module.exports = function(app) {
     produtocategorias.query("SELECT * FROM produtocategoria;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
       res.json(rows);
     });
   });
@@ -515,7 +505,6 @@ module.exports = function(app) {
     tipocategorias.query("SELECT * FROM tipocategoria;",
     function(err, rows, fields) {
       if(err) throw err;
-      console.log(rows);
       res.json(rows);
     });
   });
