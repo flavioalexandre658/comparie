@@ -1,3 +1,11 @@
+.carousel-control-next:hover{
+    background-color: #000;
+    opacity: 40%;
+}
+.carousel-control-prev:hover{
+    background-color: #000;
+    opacity: 40%;
+}
 .carousel-item{
     max-height: 335px;
 }

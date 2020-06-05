@@ -16,14 +16,26 @@
                 <div class="carousel-inner" ng-controler="promocaoController">
                     <div class="carousel-item" ng-class="{active:!$index}" ng-repeat="promocaoloja in listaPromocaoLojas">
                         <a href="{{promocaoloja.linkAfiliado}}" target="_blank">
-                            <img class="d-block w-100" src="{{promocaoloja.bannerPromocao}}" alt="Primeiro Slide">
+                            <img class="d-block w-100 img-banner" src="{{promocaoloja.bannerPromocao}}" alt="Primeiro Slide">
                         </a>
                     </div>
                 </div>
 
-                <ol class="carousel-indicators">
-                    <li ng-repeat="promocaoloja in listaPromocaoLojas" data-target="#carouselPromocao" data-slide-to="{{$index}}" ng-class="{active:!$index}"></li>
-                </ol>
+
+
+                <div class="carousel-controls">
+                    <span class="carousel-control-prev" data-target="#carouselPromocao" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </span>
+                    <ol class="carousel-indicators">
+                        <li ng-repeat="promocaoloja in listaPromocaoLojas" data-target="#carouselPromocao" data-slide-to="{{$index}}" ng-class="{active:!$index}"></li>
+                    </ol>
+                    <span class="carousel-control-next" data-target="#carouselPromocao" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Próximo</span>
+                    </span>
+                </div>
 
             </div>
 
