@@ -134,6 +134,36 @@ angular.module('services',[])
             return $http.get(baseUrl + '/getTipoCategorias/').then(function (response) {
                 return response.data;
             });
+        },
+        cadastrarMarca: function (data) {
+            return $http.post(baseUrl + '/cadastrarMarca', data).then(function (response) {
+                return response.data;
+            });
+        },
+        cadastrarNicho: function (data) {
+            return $http.post(baseUrl + '/cadastrarNicho', data).then(function (response) {
+                return response.data;
+            });
+        },
+        cadastrarLoja: function (data) {
+            return $http.post(baseUrl + '/cadastrarLoja', data).then(function (response) {
+                return response.data;
+            });
+        },
+        cadastrarTipo: function (data) {
+            return $http.post(baseUrl + '/cadastrarTipo', data).then(function (response) {
+                return response.data;
+            });
+        },
+        cadastrarCategoria: function (data) {
+            return $http.post(baseUrl + '/cadastrarCategoria', data).then(function (response) {
+                return response.data;
+            });
+        },
+        cadastrarTipoCategoria: function (data) {
+            return $http.post(baseUrl + '/cadastrarTipoCategoria', data).then(function (response) {
+                return response.data;
+            });
         }
 
     };

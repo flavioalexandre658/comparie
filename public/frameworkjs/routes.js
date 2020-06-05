@@ -24,25 +24,13 @@ angular.module('routes',[])
         templateUrl: "../views/busca.html",
         controller: 'tipoController',
     })
-    .when("/rmp", {
+    .when("/cpc", {
         templateUrl: "../views/produto.html",
         controller: 'produtoController',
     })
-    .when("/rmc", {
-        templateUrl: "../views/categoria.html",
-        controller: 'categoriaController',
-    })
-    .when("/rmmc", {
-        templateUrl: "../views/marca.html",
-        controller: 'marcaController',
-    })
-    .when("/rml", {
-        templateUrl: "../views/loja.html",
-        controller: 'lojaController',
-    })
-    .when("/rmn", {
-        templateUrl: "../views/nicho.html",
-        controller: 'nichoController',
+    .when("/cpp", {
+        templateUrl: "../views/promocao.html",
+        controller: 'promocaoController',
     })
 
     .otherwise({ redirectTo: '/home' })

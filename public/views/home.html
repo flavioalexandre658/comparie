@@ -1,23 +1,49 @@
-
-
-
 <div class="col-12 col-md-12">
-    
-    <section class="content" style="background-image: url('../lib/imgs/bg.jpg');">
+
+    <section class="content">
         <div class="heading row">
-            <div class="col-12 col-md-12">
-                <div class="col-12 col-md-12 text-light" id="mensagem">
-                    <h1>Compare ofertas de produtos em lojas confiáveis e economize!<br/> Todos os preços sempre atualizados!</h1>
+
+            <div class="col-12 py-2 px-lg-3 text-light text-center shadow-lg mx-auto" id="fundoMensagem">
+                <div class="row">
+                    <div class="col-12">
+                <h6 id="mensagem"><strong>Compare ofertas de produtos em lojas confiáveis e economize! Todos os preços sempre atualizados!</strong></h6>
                 </div>
+            </div>
+            </div>
+
+            <div id="carouselPromocao" class="carousel slide" data-ride="carousel">
+
+                <div class="carousel-inner" ng-controler="promocaoController">
+                    <div class="carousel-item" ng-class="{active:!$index}" ng-repeat="promocaoloja in listaPromocaoLojas">
+                        <a href="{{promocaoloja.linkAfiliado}}" target="_blank">
+                            <img class="d-block w-100" src="{{promocaoloja.bannerPromocao}}" alt="Primeiro Slide">
+                        </a>
+                    </div>
+                </div>
+
+                <ol class="carousel-indicators">
+                    <li ng-repeat="promocaoloja in listaPromocaoLojas" data-target="#carouselPromocao" data-slide-to="{{$index}}" ng-class="{active:!$index}"></li>
+                </ol>
+
+            </div>
+
             <div class="col-12 col-md-12" ng-controller="tipoController">
                 <ul class="nav justify-content-center" id="tipos">
+                    <div class="row">
                     <li class="nav-item" ng-repeat="tipo in listaTipos">
-                        <i class="material-icons md-48 white-color" id="{{tipo.nomeTipo.toLowerCase()}}">{{tipo.iconTipo}}</i><a ng-click="tipoClicado(tipo);" class="nav-link" href="#!{{tipo.nomeTipo.toLowerCase()}}">{{tipo.nomeTipo}}</a>
+                        <a class="col-3 text-center" href="#!{{tipo.nomeTipo.toLowerCase()}}" ng-click="tipoClicado(tipo);">
+                            <span ng-click="tipoClicado(tipo);" class="material-icons md-48 black-color rounded-circle bg-white shadow-lg pt-3" id="{{tipo.nomeTipo.toLowerCase()}}">{{tipo.iconTipo}}</span>
+                            <div class="col-12 text-center">
+                                <p class="nav-link"><strong>{{tipo.nomeTipo}}</strong></p>
+                            </div>
+                        </a>
                     </li>
+                    </div>
                 </ul>
             </div>
+
     </section>
-    
+
     <section class="row ofertas-main">
             <div class="container reveall">
                 <div class="row justify-content-center" id="titulo-ofertas"><h3><b>mais pesquisados</b></h3></div>
@@ -38,7 +64,7 @@
                     <hr class="hr-titulo"/>
 
                     <div class="row justify-content-center subtitulo-busca-main">
-                        <h6>Selecione uma categoria e compare as melhores ofertas.</h6>
+                        <h6>Selecione uma categoria e veja sugestões de ofertas.</h6>
                     </div>
 
                     <div class="row justify-content-center">

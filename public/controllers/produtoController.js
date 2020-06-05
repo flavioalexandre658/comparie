@@ -80,22 +80,10 @@ angular.module('myApp')
         produto.idProduto = $scope.produto.idProduto;
         produto.idCategoria = $scope.categoria.idCategoria;
 
-        //Verifica na tabela se ja existe relacionamneto entra o produto e a categoria e se ja existir
-        //acrescendo uma quantidade
-        /*for(let i=0;i<$scope.listaProdutoCategorias.length;i++){
-            if($scope.listaProdutoCategorias[i].idProduto == $scope.listaProdutoCategorias[produto.idProduto].idProduto &&
-                $scope.listaProdutoCategorias[i].idCategoria == produto.idCategoria){
-                produto.quantidade = $scope.listaProdutoCategorias[i].quantidade;
-                produto.quantidade++;
-                break;
-            }
-        }*/
-
-
             ProdutoServ.cadastrarProdutoCategoria(produto).then(function(res){
                 if(res.status) {
-                    window.location.reload();
-                    console.log('Cadastro na tabela relacionamento ProdutoCategoria realizado!');
+                    //window.location.reload();
+                    alert("Cadastro na tabela relacionamento ProdutoCategoria realizado!");
                 } else {
                     console.log(res.message);
                 }
@@ -109,6 +97,7 @@ angular.module('myApp')
         let produto = {};
         produto.idProduto = $scope.produto.idProduto;
         produto.idLoja = $scope.loja.idLoja;
+        produto.linkAfiliado = $scope.loja.linkAfiliado;
         produto.link = $scope.loja.link;
         produto.preco = $scope.loja.preco;
         produto.parcelas = $scope.loja.parcelas;
@@ -127,8 +116,8 @@ angular.module('myApp')
         if(!produto.quantidade){
             ProdutoServ.cadastrarProdutoLoja(produto).then(function(res){
                 if(res.status) {
-                    window.location.reload();
-                    console.log('Cadastro na tabela relacionamento ProdutoLoja realizado!');
+                    //window.location.reload();
+                    alert('Cadastro na tabela relacionamento ProdutoLoja realizado!');
                 } else {
                     console.log(res.message);
                 }
@@ -147,16 +136,103 @@ angular.module('myApp')
 
     };
 
-    $scope.acrescentarClique = function(produto){
-        produto.cliques++;
-        ProdutoServ.editarProdutoClique(produto).then(function(res) {
+    $scope.cadastrarMarca = function() {
+
+        let marca = $scope.marca;
+        marca.nomeMarca = $scope.marca.nomeMarca;
+
+        ProdutoServ.cadastrarMarca(marca).then(function(res) {
+        if(res.status) {
+            //window.location.reload();
+            alert("Marca cadastrada!")
+        } else {
+            console.log(res.message);
+        }
+        }, function(err) {
+            console.log(err)
+        });
+    };
+
+    $scope.cadastrarNicho = function() {
+
+        let nicho = $scope.nicho;
+        nicho.nomeNicho = $scope.nicho.nomeNicho;
+
+        ProdutoServ.cadastrarNicho(nicho).then(function(res) {
+        if(res.status) {
+            //window.location.reload();
+            alert("Nicho cadastrado!")
+        } else {
+            console.log(res.message);
+        }
+        }, function(err) {
+            console.log(err)
+        });
+    };
+
+    $scope.cadastrarLoja = function() {
+
+        let loja = $scope.loja;
+        loja.nomeLoja = $scope.loja.nomeLoja;
+        loja.link = $scope.loja.link;
+
+        ProdutoServ.cadastrarLoja(loja).then(function(res) {
+        if(res.status) {
+            //window.location.reload();
+            alert("Loja cadastrada!")
+        } else {
+            console.log(res.message);
+        }
+        }, function(err) {
+            console.log(err)
+        });
+    };
+
+    $scope.cadastrarCategoria = function() {
+
+        let categoria = $scope.categoria;
+        categoria.nomeCategoria = $scope.categoria.nomeCategoria;
+        ProdutoServ.cadastrarCategoria(categoria).then(function(res) {
+        if(res.status) {
+            //window.location.reload();
+            alert("Categoria cadastrada!")
+        } else {
+            console.log(res.message);
+        }
+        }, function(err) {
+            console.log(err)
+        });
+    };
+
+    $scope.cadastrarTipoCategoria = function() {
+
+        let tipo = {};
+        tipo.idTipo = $scope.tipo.idTipo;
+        tipo.idCategoria = $scope.categoria.idCategoria;
+
+        // se o relacionamento ainda não existe
+        ProdutoServ.cadastrarTipoCategoria(tipo).then(function(res){
             if(res.status) {
-                console.log('Cliques atualizado!');
+                //window.location.reload();
+                alert("Cadastro na tabela relacionamento TipoCategoria realizado!")
             } else {
                 console.log(res.message);
             }
             }, function(err) {
                 console.log(err)
+        });
+    };
+
+    $scope.acrescentarClique = function(produto){
+        produto.cliques++;
+        ProdutoServ.editarProdutoClique(produto).then(function(res) {
+            if(res.status) {
+                //console.log('Cliques atualizado!');
+            } else {
+                //console.log(res.message);
+            }
+            }, function(err) {
+                //console.log(err)
         });
     };
 }])

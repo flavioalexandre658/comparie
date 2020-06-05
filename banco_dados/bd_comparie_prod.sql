@@ -82,6 +82,7 @@ create table produtos(
 create table produtoloja(
     idLoja int,
     idProduto int,
+    linkAfiliado varchar(250) NOT NULL,
     link varchar(800) not null,
     preco varchar(100) not null,
     parcelas varchar(100) not null,

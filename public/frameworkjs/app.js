@@ -11,12 +11,14 @@ angular.module('myApp',
     ]).filter('filterLoja', function() {
         return function(input,idProduto) {
         let result = [], qtd = 0;
+        if(input.length != undefined){
             for (let i = 0; i < input.length; i++) {
                 if (input[i].idProduto === idProduto && qtd == 0){
                     result.push(input[i]);
                     qtd++;
                 }
             }
+        }
         return result;
         };
       });

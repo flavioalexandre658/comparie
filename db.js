@@ -30,6 +30,9 @@ const mysqlModel = require('./db-mysql-model');
     Tipos: connection.extend({
       tableName: "tipos"
     }),
+    Promocoes: connection.extend({
+      tableName: "promocoes"
+    }),
     ProdutoLoja: connection.extend({
       tableName: "produtoloja"
     }),
@@ -38,5 +41,8 @@ const mysqlModel = require('./db-mysql-model');
     }),
     TipoCategoria: connection.extend({
       tableName: "tipocategoria"
+    }),
+    PromocaoLoja: connection.extend({
+      tableName: "promocaoloja"
     })
  }

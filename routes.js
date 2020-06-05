@@ -378,9 +378,10 @@ module.exports = function(app) {
 
   app.post('/cadastrarProdutoLoja', function(req, res) {  /// Cadastra um novo nicho
     produtolojas = new dbfun.ProdutoLoja();
-    produtolojas.query("INSERT INTO `comparie`.`produtoloja` (`idLoja`, `idProduto`, `link`, `preco`, `parcelas`, `quantidade`) VALUES('"
+    produtolojas.query("INSERT INTO `comparie`.`produtoloja` (`idLoja`, `idProduto`, `linkAfiliado`, `link`, `preco`, `parcelas`, `quantidade`) VALUES('"
       + req.body.idLoja + "','"
       + req.body.idProduto + "','"
+      + req.body.linkAfiliado + "','"
       + req.body.link + "','"
       + req.body.preco + "','"
       + req.body.parcelas + "','"
@@ -533,6 +534,102 @@ module.exports = function(app) {
     function(err, rows, fields) {
       if(err) throw err;
       res.json(rows);
+    });
+  });
+
+  app.post('/cadastrarPromocao', function(req, res) {  /// Cadastra uma nova promocao
+    promocoes = new dbfun.Promocoes();
+    promocoes.query("INSERT INTO `comparie`.`promocoes` (`idPromocao`, `nomePromocao`, `dataInicio`, `dataFim`) VALUES('"
+      + req.body.idPromocao + "','"
+      + req.body.nomePromocao + "','"
+      + req.body.dataInicio + "','"
+      + req.body.dataFim +"');",
+      function(err) {
+        if(err){
+          res.json({
+            status: false,
+            message: 'Erro ao Cadastrar Promocao'
+          });
+        }else{
+          res.json({
+            status: true,
+            message: 'Promocao cadastrada'
+          });
+        }
+      });
+
+  });
+
+  app.post('/cadastrarPromocaoLoja', function(req, res) {  /// Cadastra uma nova promocao
+    promocaoloja = new dbfun.PromocaoLoja();
+    promocaoloja.query("INSERT INTO `comparie`.`promocaoloja` (`idLoja`, `idPromocao`, `bannerPromocao`, `linkAfiliado`) VALUES('"
+      + req.body.idLoja + "','"
+      + req.body.idPromocao + "','"
+      + req.body.bannerPromocao + "','"
+      + req.body.linkAfiliado +"');",
+      function(err) {
+        if(err){
+          res.json({
+            status: false,
+            message: 'Erro ao Cadastrar Promocao'
+          });
+        }else{
+          res.json({
+            status: true,
+            message: 'Promocao cadastrada'
+          });
+        }
+      });
+
+  });
+
+  app.get('/getPromocaoLojas', function(req, res) { /// Retorna do banco todos os status cadastrados
+    promocaoloja = new dbfun.PromocaoLoja();
+    promocaoloja.query("SELECT * FROM promocaoloja;",
+    function(err, rows, fields) {
+      if(err) throw err;
+      res.json(rows);
+    });
+  });
+
+  app.get('/getPromocoes', function(req, res) { /// Retorna do banco todos os status cadastrados
+    promocoes = new dbfun.Promocoes();
+    promocoes.query("SELECT * FROM promocoes;",
+    function(err, rows, fields) {
+      if(err) throw err;
+      res.json(rows);
+    });
+  });
+
+  app.put('/editarPromocao/:id', function(req, res) { /// Edita um obra a partir de seus dados
+    promocoes = new dbfun.Promocoes(); /// Conexão com o banco
+    promocoes.query("UPDATE `comparie`.`promocoes` SET `nomePromocao` = '"+ req.body.nomePromocao
+    +"',`dataInicio` = '"+ req.body.dataInicio
+    +"',`dataFim` = '"+ req.body.dataFim
+    +"'WHERE `idPromocao` = '"+req.params.id+"';",  /// Atualiza os dados com a query do banco a patir do id
+      function(err) { // Caso ocorra um erro
+        if(err)
+          res.send(err);
+      });
+    res.json({  /// Caso ocorra com sucesso
+      status: true,
+      message: 'Promocao Atualizada'
+    });
+  });
+
+  app.delete('/removerPromocao/:id', function(req, res) {   /// Deleta uma determinada obra
+    promocoes = new dbfun.Promocoes();  /// Conexão com o banco
+    promocoes.remove('idPromocao =' + req.params.id, function(err, ret) {  /// Remove a obra a partir de seu id
+      if(err)  /// Caso ocorra um erro
+        res.send(err);
+    });
+  });
+
+  app.delete('/removerPromocaoLoja/:id', function(req, res) {   /// Deleta uma determinada obra
+    promocaoloja = new dbfun.PromocaoLoja();  /// Conexão com o banco
+    promocaoloja.remove('idPromocao =' + req.params.id, function(err, ret) {  /// Remove a obra a partir de seu id
+      if(err)  /// Caso ocorra um erro
+        res.send(err);
     });
   });
 

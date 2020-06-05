@@ -1,4 +1,5 @@
 <div class="m-t">
+
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <button type="button"class="nav-link active" id="cadastrarProduto-tab" data-toggle="tab" href="#cadastrarProduto" role="tab" aria-controls="cadastrarProduto" aria-selected="true">Cadastrar Produto</button>
@@ -9,8 +10,28 @@
         <li class="nav-item">
             <button type="button"class="nav-link" id="cadastrarProdutoCategoria-tab" data-toggle="tab" href="#cadastrarProdutoCategoria" role="tab" aria-controls="cadastrarProdutoCategoria" aria-selected="false">Cadastrar Produto em Categoria</button>
         </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarMarca-tab" data-toggle="tab" href="#cadastrarMarca" role="tab" aria-controls="cadastrarMarca" aria-selected="false">Cadastrar Marca</button>
+        </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarNicho-tab" data-toggle="tab" href="#cadastrarNicho" role="tab" aria-controls="cadastrarNicho" aria-selected="false">Cadastrar Nicho</button>
+        </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarLoja-tab" data-toggle="tab" href="#cadastrarLoja" role="tab" aria-controls="cadastrarLoja" aria-selected="false">Cadastrar Loja</button>
+        </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarCategoria-tab" data-toggle="tab" href="#cadastrarCategoria" role="tab" aria-controls="cadastrarCategoria" aria-selected="false">Cadastrar Categoria</button>
+        </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarTipo-tab" data-toggle="tab" href="#cadastrarTipo" role="tab" aria-controls="cadastrarTipo" aria-selected="true">Cadastrar Tipo</button>
+        </li>
+        <li class="nav-item">
+            <button type="button"class="nav-link" id="cadastrarTipoCategoria-tab" data-toggle="tab" href="#cadastrarTipoCategoria" role="tab" aria-controls="cadastrarTipoCategoria" aria-selected="false">Cadastrar Tipo/Categoria</button>
+        </li>
     </ul>
+
     <div class="tab-content" id="myTabContent">
+
         <div class="tab-pane fade show active" id="cadastrarProduto" role="tabpanel" aria-labelledby="cadastrarProduto-tab">
             <form class="form-m-t-p">
                 <div class="row">
@@ -27,7 +48,7 @@
             
                         <div class="form-group">
                             <label for="nomeTipo">Tipo do produto</label>
-                            <select class="form-control" id="nomeTipo"  ng-model="produto.idTipo" required>
+                            <select class="form-control"  ng-model="produto.idTipo" required>
                                 <option value="">Tipo</option>
                                 <option  ng-repeat="tipo in listaTipos" ng-value="tipo.idTipo">{{tipo.nomeTipo}}</option>
                             </select>
@@ -65,6 +86,7 @@
                 </div>
             </form>
         </div>
+
         <div class="tab-pane fade" id="cadastrarProdutoLoja" role="tabpanel" aria-labelledby="cadastrarProdutoLoja-tab">
             
             <form class="form-m-t-p">
@@ -73,7 +95,7 @@
 
                         <div class="form-group">
                             <label for="nomeTipo">Tipo do produto</label>
-                            <select class="form-control" id="nomeTipo"  ng-model="tipo.idTipo" required>
+                            <select class="form-control"   ng-model="tipo.idTipo" required>
                                 <option value="">Tipo</option>
                                 <option  ng-repeat="tipo in listaTipos" ng-value="tipo.idTipo">{{tipo.nomeTipo}}</option>
                             </select>
@@ -81,7 +103,7 @@
 
                         <div class="form-group">
                             <label for="">Produto</label>
-                            <select class="form-control" id="idProduto" ng-model="produto.idProduto" required>
+                            <select class="form-control" id="idProduto1" ng-model="produto.idProduto" required>
                                 <option value="">Produto</option>
                                 <option  ng-repeat="produto in listaProdutos|filter:tipo" ng-value="produto.idProduto">{{produto.nomeProduto}}</option>
                             </select>
@@ -93,6 +115,11 @@
                                 <option value="">Loja</option>
                                 <option  ng-repeat="loja in listaLojas" ng-value="loja.idLoja">{{loja.nomeLoja}}</option>
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="linkAfiliadoLoja">LinkAfiliado do produto na loja</label>
+                            <input type="text" class="form-control" id="linkAfiliadoLoja" placeholder="Link afiliado do produto na loja" ng-model="loja.linkAfiliado" required>
                         </div>
 
                         <div class="form-group">
@@ -116,6 +143,7 @@
             </form>
             
         </div>
+
         <div class="tab-pane fade" id="cadastrarProdutoCategoria" role="tabpanel" aria-labelledby="cadastrarProdutoCategoria-tab">
 
             <form class="form-m-t-p">
@@ -124,7 +152,7 @@
 
                         <div class="form-group">
                             <label for="nomeTipo">Tipo do produto</label>
-                            <select class="form-control" id="nomeTipo"  ng-model="tipo.idTipo" required>
+                            <select class="form-control"   ng-model="tipo.idTipo" required>
                                 <option value="">Tipo</option>
                                 <option  ng-repeat="tipo in listaTipos" ng-value="tipo.idTipo">{{tipo.nomeTipo}}</option>
                             </select>
@@ -152,5 +180,116 @@
             </form>
 
         </div>
+
+        <div class="tab-pane fade" id="cadastrarMarca" role="tabpanel" aria-labelledby="cadastrarMarca-tab">
+            <form class="form-m-t-p">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        
+                        <div class="form-group">
+                            <label for="nomeMarca">Marcas de produto</label>
+                            <input type="text" class="form-control" id="nomeMarca" placeholder="Lg, samsung" ng-model="marca.nomeMarca" required>
+                        </div>
+            
+                        <button type="submit"ng-click="cadastrarMarca()" class="btn btn-primary">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="tab-pane fade" id="cadastrarNicho" role="tabpanel" aria-labelledby="cadastrarNicho-tab">
+            <form class="form-m-t-p">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        
+                        <div class="form-group">
+                            <label for="nomeNicho">Nichos de produto</label>
+                            <input type="text" class="form-control" id="nomeNicho" placeholder="Informática, eletropotáteis" ng-model="nicho.nomeNicho" required>
+                        </div>
+            
+                        <button type="submit"ng-click="cadastrarNicho()" class="btn btn-primary">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="tab-pane fade" id="cadastrarLoja" role="tabpanel" aria-labelledby="cadastrarLoja-tab">
+            <form class="form-m-t-p">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        
+                        <div class="form-group">
+                            <label for="nomeLoja">Nome da loja</label>
+                            <input type="text" class="form-control" id="nomeLoja" placeholder="Americanas, Magazine Luiza" ng-model="loja.nomeLoja" required>
+                        </div>
+            
+                        <button type="submit"ng-click="cadastrarLoja()" class="btn btn-primary">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="tab-pane fade" id="cadastrarCategoria" role="tabpanel" aria-labelledby="cadastrarTipo-tab">
+            <form class="form-m-t">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="nomeCategoria">Categorias de produto</label>
+                            <input type="text" class="form-control" id="nomeCategoria" placeholder="4k, full hd, led" ng-model="categoria.nomeCategoria" required>
+                        </div>
+                        <button type="submit"ng-click="cadastrarCategoria()" class="btn btn-primary">Confirmar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="tab-pane fade" id="cadastrarTipo" role="tabpanel" aria-labelledby="cadastrarTipo-tab">
+            <form class="form-m-t">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        
+                        <div class="form-group">
+                            <label for="nomeTipo">Nome do tipo produto</label>
+                            <input type="text" class="form-control"  placeholder="TV, notebook" ng-model="tipo.nomeTipo" required>
+                        </div>
+
+                        <button type="submit"ng-click="cadastrarTipo()" class="btn btn-primary">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="tab-pane fade" id="cadastrarTipoCategoria" role="tabpanel" aria-labelledby="cadastrarTipoCategoria-tab">
+            <form class="form-m-t">
+                <div class="row">
+                    <div class="offset-md-3 col-6 col-md-6">
+                        
+                        <div class="form-group">
+                            <label for="">Tipo</label>
+                            <select class="form-control" id="idTipo" ng-model="tipo.idTipo" required>
+                                <option value="">Tipo</option>
+                                <option  ng-repeat="tipo in listaTipos" ng-value="tipo.idTipo">{{tipo.nomeTipo}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tipoCategoria">Categoria</label>
+                            <select class="form-control" id="tipoCategoria" ng-model="categoria.idCategoria" required>
+                                <option value="">Categoria</option>
+                                <option  ng-repeat="categoria in listaCategorias" ng-value="categoria.idCategoria">{{categoria.nomeCategoria}}</option>
+                            </select>
+                        </div>
+
+                        <button type="submit"ng-click="cadastrarTipoCategoria();" class="btn btn-primary">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
 </div>
