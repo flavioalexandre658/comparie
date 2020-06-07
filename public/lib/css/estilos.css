@@ -32,6 +32,10 @@
     #titulo-ofertas h3{
         font-size: 20px;
     }
+    .img-banner{
+        height:290px;
+        object-fit: fill;
+    }
 }
 
 @media (min-width: 992px) { 
