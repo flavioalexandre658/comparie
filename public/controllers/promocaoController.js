@@ -48,6 +48,7 @@ angular.module('myApp')
         promocao.idLoja = $scope.loja.idLoja;
         promocao.idPromocao = $scope.promocao.idPromocao;
         promocao.bannerPromocao = $scope.promocao.bannerPromocao;
+        promocao.bannerPromocaoMobile = $scope.promocao.bannerPromocaoMobile;
         promocao.linkAfiliado = $scope.promocao.linkAfiliado;
 
         PromocaoServ.cadastrarPromocaoLoja(promocao).then(function(res) {

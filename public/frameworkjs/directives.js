@@ -41,12 +41,11 @@ angular.module('directives',[])
           }
         }
         
-        $scope.cliqueVerLojas = function(id, onMobile){
-          if(onMobile){
+        $scope.cliqueVerLojas = function(id){
+          //var index = $("#carouselCard").find('.active').index();
             $("#"+id+"-cardreview").show();
             $("#"+id+"-backdrop").removeClass('card-backdrop fade');
             $("#"+id+"-backdrop").addClass('card-backdrop show');
-          }
         };
 
         $scope.houverIn = function(id, onMobile){

@@ -562,10 +562,11 @@ module.exports = function(app) {
 
   app.post('/cadastrarPromocaoLoja', function(req, res) {  /// Cadastra uma nova promocao
     promocaoloja = new dbfun.PromocaoLoja();
-    promocaoloja.query("INSERT INTO `comparie`.`promocaoloja` (`idLoja`, `idPromocao`, `bannerPromocao`, `linkAfiliado`) VALUES('"
+    promocaoloja.query("INSERT INTO `comparie`.`promocaoloja` (`idLoja`, `idPromocao`, `bannerPromocao`, `bannerPromocaoMobile`, `linkAfiliado`) VALUES('"
       + req.body.idLoja + "','"
       + req.body.idPromocao + "','"
       + req.body.bannerPromocao + "','"
+      + req.body.bannerPromocaoMobile + "','"
       + req.body.linkAfiliado +"');",
       function(err) {
         if(err){

@@ -1,37 +1,77 @@
-    <div class="card-deck justify-content-center">
-        <div class="row row-m-t card-conteudo" ng-controller="homeController" ng-mouseover="houverIn(produto.idProduto + idcard, onMobile)" ng-mouseleave="houverOut(produto.idProduto + idcard, onMobile)" dir-paginate="produto in listaproduto|itemsPerPage:qtditems" pagination-id="pagid">
-                <div class="card text-center mw-100" ng-mouseenter="infoProdutoLoja(produto)">
+<div class="content" ng-controller="homeController">
+    <div class="d-none d-md-block">
+        <div class="card-deck col-2 col-md-12 justify-content-center">
+            <div class="row row-m-t card-conteudo" ng-if="!onMobile" ng-mouseover="houverIn(produto.idProduto + idcard, false)" ng-mouseleave="houverOut(produto.idProduto + idcard, false)" dir-paginate="produto in listaproduto|itemsPerPage:qtditems" pagination-id="pagid">
+                    <div class="card text-center mw-100" ng-mouseenter="infoProdutoLoja(produto)">
 
-                    <carddeck-backdrop produto="produto" idcard="idcard" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></carddeck-backdrop>
-                    
-                    <div class="container-fluid shadow-sm p-3 mb-5 bg-white" id="container-img-card">
-                        <div class="row">
-                            <div class="col-12 col-md-12 h-80" style="width: 250px;">
-                                <img class="card-img-top" src="{{produto.imagemProduto}}" alt="{{produto.descricao}}">
+                        <carddeck-backdrop produto="produto" idcard="idcard" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></carddeck-backdrop>
+                        
+                        <div class="container-fluid shadow-sm p-3 mb-5 bg-white" id="container-img-card">
+                            <div class="row">
+                                <div class="col-12 col-md-12 h-80" style="width: 250px;">
+                                    <img class="card-img-top" src="{{produto.imagemProduto}}" alt="{{produto.descricao}}">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card-body p-2 align-middle">
-                            <h5 class="card-header bg-transparent border-top">{{produto.nomeProduto}}</h5>
-                    </div>
+                        <div class="card-body p-2 align-middle">
+                                <h5 class="card-header bg-transparent border-top">{{produto.nomeProduto}}</h5>
+                        </div>
 
-                    <div class="card-footer p-2 bg-transparent border-0">
-                        <p class="card-text">{{produto.descricao}}</p>
-                    </div>
+                        <div class="card-footer p-2 bg-transparent border-0">
+                            <p class="card-text">{{produto.descricao}}</p>
+                        </div>
 
-                    <div class="card-footer p-2 bg-transparent border-0" ng-repeat="loja in listaprodutolojas | filterLoja:produto.idProduto">
-                        <h5 class="preco">R${{loja.preco}} </h5>
-                        <p class="avista">à vista</p>
+                        <div class="card-footer p-2 bg-transparent border-0" ng-repeat="loja in listaprodutolojas | filterLoja:produto.idProduto">
+                            <h5 class="preco">R${{loja.preco}} </h5>
+                            <p class="avista">à vista</p>
+                        </div>
                     </div>
-                    
-                    <div class="card-footer bg-transparent border-0" ng-show="onMobile">
-                        <!-- <button ng-click="showModal(produto.idProduto)" type="button"class="btn btn-outline-primary" data-toggle="modal" id="lojasComProduto">Ver Lojas</button>
-                        <modal-produto produto="produto" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></modal-produto>-->
-                        <button type="button"class="btn btn-outline-primary" ng-click="cliqueVerLojas(produto.idProduto + idcard, onMobile)">Ver Lojas</button>
-                    </div>
-
-                </div>
+            </div>
         </div>
+        <div class="col-12 col-md-12"><dir-pagination-controls pagination-id="pagid" max-size="2" direction-links="true" boundary-links="false" ></dir-pagination-controls></div>
     </div>
-   <div class="col-12 col-md-12"><dir-pagination-controls pagination-id="pagid" max-size="2" direction-links="true" boundary-links="false" ></dir-pagination-controls></div>
+
+    <div class="d-block d-md-none">
+        <div class="card-deck col-3 col-md-12 justify-content-center">
+            <div class="row row-m-t card-conteudo" ng-if="onMobile" ng-mouseover="houverIn(produto.idProduto + idcard, true)" ng-mouseleave="houverOut(produto.idProduto + idcard, true)" dir-paginate="produto in listaproduto|itemsPerPage:1" pagination-id="4">
+                    <div class="card text-center mw-100" ng-mouseenter="infoProdutoLoja(produto)">
+
+                        <carddeck-backdrop produto="produto" idcard="idcard" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></carddeck-backdrop>
+
+                        <div class="container-fluid shadow-sm p-3 mb-5 bg-white" id="container-img-card">
+                            <div class="row">
+                                <div class="col-12 col-md-12 h-80" style="width: 250px;">
+                                    <img class="card-img-top" src="{{produto.imagemProduto}}" alt="{{produto.descricao}}">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="card-body p-2 align-middle">
+                                <h5 class="card-header bg-transparent border-top">{{produto.nomeProduto}}</h5>
+                        </div>
+    
+                        <div class="card-footer p-2 bg-transparent border-0">
+                            <p class="card-text">{{produto.descricao}}</p>
+                        </div>
+    
+                        <div class="card-footer p-2 bg-transparent border-0" ng-repeat="loja in listaprodutolojas | filterLoja:produto.idProduto">
+                            <h5 class="preco">R${{loja.preco}} </h5>
+                            <p class="avista">à vista</p>
+                        </div>
+                        
+                        <div class="card-footer bg-transparent border-0">
+                            <!-- <button ng-click="showModal(produto.idProduto)" type="button"class="btn btn-outline-primary" data-toggle="modal" id="lojasComProduto">Ver Lojas</button>
+                            <modal-produto produto="produto" listaloja="listaloja" listaprodutolojas="listaprodutolojas"></modal-produto>-->
+                            <button type="button"class="btn btn-outline-primary" ng-click="cliqueVerLojas(produto.idProduto + idcard, true)">Ver Lojas</button>
+                        </div>
+    
+                    </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-12"><dir-pagination-controls pagination-id="4" max-size="1" direction-links="true"></dir-pagination-controls></div>
+    </div>
+
+    </div>
+
+</div>

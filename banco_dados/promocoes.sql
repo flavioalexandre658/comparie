@@ -12,6 +12,7 @@ create table promocaoloja(
     idLoja int,
     idPromocao int,
     bannerPromocao varchar(250) not null,
+    bannerPromocaoMobile varchar(250) not null,
     linkAfiliado varchar(250) NOT NULL,
     quantidade int default 0,
     foreign key (idLoja) references lojas(idLoja) on delete no action on update cascade,

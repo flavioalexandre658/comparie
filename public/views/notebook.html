@@ -1,4 +1,4 @@
-<div class="col-11 col-md-11">
+<div class="col-11">
     <nav aria-label="breadcrumb" id="breadcumbSite">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Início</a></li>
@@ -6,90 +6,77 @@
         </ol>
     </nav>
 
-    <section id="p-container">
+    <div class="row">
+        <div class="col-12 col-lg-12 titulo-descricao">
+            <h4>Notebook</h4>
+        </div>
 
-        <div class="col-12 col-md-12">
-            <div class="col-12 col-md-12 heading-p-container">
+        <div class="col-12 col-lg-12 descricao text-center">
+            <p> Procurando por Notebook bom e barato?
+                Realizamos pesquisas em algumas lojas de confiança e
+                selecionamos os melhores Notebooks
+                para você! <br />Olha só as melhores ofertas. 
+                Faça a escolha certa hoje!</p>
+        </div>
+    </div>
 
-                <div class="row titulo-descricao">
-                        <h4>Notebook</h4>
+    <div class="row content-produtos">
+
+        <div class="col-12 col-lg-2">
+            <div class="row">
+                <div class="col-6 col-lg-12">
+                    <div class="titulo-painel">
+                        <h5>Marcas</h5>
+                    </div>
+                    <!--DIV CONTROLA MENU DE CHECKBOX-->
+                    <div class="col-12 col-lg-12 custom-control" ng-repeat="marca in listaMarcasSelecionada">
+                            <label>
+                            <input class="cb-marca" type="checkbox" ng-model="marca.selecionado" ng-change="defineMarca(marca, listaProdutosTipoClicado)">
+                            {{marca.nomeMarca}}</label>
+                    </div>
+
                 </div>
-
-                <div class="row descricao">
-                    <p> Procurando por Notebook bom e barato?
-                        Realizamos pesquisas em algumas lojas de confiança e
-                        selecionamos os melhores Notebooks
-                        para você! <br />Olha só as melhores ofertas. 
-                        Faça a escolha certa hoje!</p>
+                <div class="col-6 col-lg-12">
+                    <div class="titulo-painel">
+                        <h5>Preços</h5>
+                    </div>
+                    <!--DIV CONTROLA MENU DE CHECKBOX-->
+                    <div class="col-12 col-lg-12 custom-control" ng-repeat="preco in faixasPreco">
+                        <label>
+                            <input class="cb-preco" type="checkbox" ng-model="preco.selecionado" ng-change="definePreco(preco, listaProdutosTipoClicado)">
+                            R${{preco.preco1}} até R${{preco.preco2}}</label>
+                    </div>
                 </div>
-
             </div>
+        </div>
 
-
-
+        <div class="col-12 col-lg-10">
 
             <div class="row">
-
-                <div class="col-2 col-sm-2 justify-content-center">
-                    <div class="col-12 col-md-12">
-
-                        <div class="row titulo-painel">
-                            <h5>Marcas</h5>
-                        </div>
-                        <!--DIV CONTROLA MENU DE CHECKBOX-->
-                        <div class = "row">
-                            <div class="col-12 col-md-12 custom-control" ng-repeat="marca in listaMarcasSelecionada">
-                                    <label>
-                                    <input class="cb-marca" type="checkbox" ng-model="marca.selecionado" ng-change="defineMarca(marca, listaProdutosTipoClicado)">
-                                    {{marca.nomeMarca}}</label>
-                            </div>
-                        </div>
-
-                        <div class="row titulo-painel">
-                            <h5>Preços</h5>
-                        </div>
-                        <!--DIV CONTROLA MENU DE CHECKBOX-->
-                        <div class = "row">
-                            <div class="col-12 col-md-12 custom-control" ng-repeat="preco in faixasPreco">
-                                <label>
-                                    <input class="cb-preco" type="checkbox" ng-model="preco.selecionado" ng-change="definePreco(preco, listaProdutosTipoClicado)">
-                                    R${{preco.preco1}} até R${{preco.preco2}}</label>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-12 titulo-sugestao">
+                    <h6>Pesquisa rápida</h6>
                 </div>
 
-                <div class="col-10 col-sm-10 justify-content-center">
-
-                    <div class="col-12 col-md-12">
-
-                        <div class="row titulo-sugestao">
-                            <h6>Pesquisa rápida</h6>
-                        </div>
-
-                        <!--DIV CONTROLA MENU DE PILLS-->
-                        <div class="row">
-                            <ul class="nav nav-pills mb-3" id="myTab" role="tablist">
-                                <li class="nav-item" ng-repeat="categoria in listaCategoriasTipoClicado">
-                                    <a id="pill-link"class="nav-link" data-toggle="pill" ng-click="defineCategoria(categoria);" href="pillespecifico" data-target="#pillespecifico" role="tab" aria-controls="{{categoria.nomeCategoria}}" aria-selected="true">{{categoria.nomeCategoria}}</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div class="tab-content reveall" id="pills-tabContent">
-                        <!--DIV REFERENTE AO MENU DE PILLS-->
-                        <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{filtro.nomeFiltro}}-tab" id="pillespecifico">
-                            <carddeck-produto  ng-if="filtro.nomeFiltro.toLowerCase() != 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosSelecionada" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
-                            <carddeck-produto  ng-if="filtro.nomeFiltro.toLowerCase() == 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosTipoClicado" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
-                        </div>
-                    </div>
-                    
+                <!--DIV CONTROLA MENU DE PILLS-->
+                <div class="col-12">
+                    <ul class="nav nav-pills mb-3" id="myTab" role="tablist">
+                        <li class="nav-item" ng-repeat="categoria in listaCategoriasTipoClicado">
+                            <a id="pill-link"class="nav-link" data-toggle="pill" ng-click="defineCategoria(categoria);" href="pillespecifico" data-target="#pillespecifico" role="tab" aria-controls="{{categoria.nomeCategoria}}" aria-selected="true">{{categoria.nomeCategoria}}</a>
+                        </li>
+                    </ul>
                 </div>
-                
+
             </div>
 
+                <div class="tab-content reveall" id="pills-tabContent">
+                    <!--DIV REFERENTE AO MENU DE PILLS-->
+                    <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{filtro.nomeFiltro}}-tab" id="pillespecifico">
+                        <carddeck-produto  ng-if="filtro.nomeFiltro.toLowerCase() != 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosSelecionada" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
+                        <carddeck-produto  ng-if="filtro.nomeFiltro.toLowerCase() == 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosTipoClicado" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
+                    </div>
+                </div>
+            
         </div>
-    </section>
+    </div>
+
 </div>
