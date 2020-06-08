@@ -17,45 +17,62 @@
 
 
 
-        <div class="col-12 col-lg-2">
-            <div class="row">
-                <div class="col-6 col-lg-12">
-                    <div class="titulo-painel">
-                        <h5>Marcas</h5>
+    <div class="col-12 col-lg-2">
+        <div class="row justify-content-center">
+
+            <div class="col-6 col-lg-12">
+
+                <div id="marcas">
+                    <div id="marcasHeading" class="text-center">
+                        <button class="btn btn-outline-info btn-sm titulo-painel" type="button" data-toggle="collapse" data-target="#marcaCollapse" aria-expanded="true" aria-controls="marcaCollapse">
+                            <h6 class="pt-1">Marcas</h6>
+                        </button>
                     </div>
-                    <!--DIV CONTROLA MENU DE CHECKBOX-->
-                    <div class="col-12 col-lg-12 custom-control" ng-repeat="marca in listaMarcas">
+
+                    <div id="marcaCollapse" class="collapse" aria-labelledby="marcasHeading" data-parent="#marcas">
+                        <div class="col-12 col-lg-12 custom-control mt-2" ng-repeat="marca in listaMarcasSelecionada">
                             <label>
-                            <input class="cb-marca" type="checkbox" ng-model="marca.selecionado" ng-change="defineMarca(marca, listaProdutos)">
-                            {{marca.nomeMarca}}</label>
+                            <input class="cb-marca" type="checkbox" ng-model="marca.selecionado" ng-change="defineMarca(marca, listaProdutosTipoClicado)">
+                            <b>{{marca.nomeMarca}}</b></label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-6 col-lg-12">
+
+                <div id="precos">
+                    <div id="precosHeading" class="text-center">
+                        <button class="btn btn-outline-info btn-sm titulo-painel" type="button" data-toggle="collapse" data-target="#precoCollapse" aria-expanded="true" aria-controls="precoCollapse">
+                            <h6 class="pt-1">Preço</h6>
+                        </button>
                     </div>
 
-                </div>
-                <div class="col-6 col-lg-12">
-                    <div class="titulo-painel">
-                        <h5>Preços</h5>
-                    </div>
-                    <!--DIV CONTROLA MENU DE CHECKBOX-->
-                    <div class="col-12 col-lg-12 custom-control" ng-repeat="preco in faixasPreco">
-                        <label>
-                            <input class="cb-preco" type="checkbox" ng-model="preco.selecionado" ng-change="definePreco(preco, listaProdutos)">
-                            R${{preco.preco1}} até R${{preco.preco2}}</label>
+                    <div id="precoCollapse" class="collapse" aria-labelledby="precosHeading" data-parent="#precos">
+                        <div class="col-12 col-lg-12 custom-control mt-2" ng-repeat="preco in faixasPreco">
+                            <label>
+                            <input class="cb-preco" type="checkbox" ng-model="preco.selecionado" ng-change="definePreco(preco, listaProdutosTipoClicado)">
+                            <b>R${{preco.preco1}} até R${{preco.preco2}}</b></label>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-12 col-lg-10">
-            
-            <div class="tab-content reveall" id="pills-tabContent">
-                <!--DIV REFERENTE AO MENU DE PILLS-->
-                <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{filtro.nomeFiltro}}-tab" id="pillespecifico">
-                    <carddeck-produto  buscafilter="busca" ng-if="filtro.nomeFiltro.toLowerCase() != 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosSelecionada" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
-                    <carddeck-produto  buscafilter="busca" ng-if="filtro.nomeFiltro.toLowerCase() == 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosSelecionada" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
-                </div>
             </div>
-            
         </div>
+    </div>
+
+    <div class="col-12 col-lg-10">
+        
+        <div class="tab-content reveall" id="pills-tabContent">
+            <!--DIV REFERENTE AO MENU DE PILLS-->
+            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{filtro.nomeFiltro}}-tab" id="pillespecifico">
+                <carddeck-produto  buscafilter="busca" ng-if="filtro.nomeFiltro.toLowerCase() != 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosSelecionada" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
+                <carddeck-produto  buscafilter="busca" ng-if="filtro.nomeFiltro.toLowerCase() == 'todos'" qtditems="9" idcard="id_card" pagid="1" col="4" listaproduto="listaProdutosSelecionada" listaloja="listaLojas" listaprodutolojas="listaProdutoLojas"></carddeck-produto>
+            </div>
+        </div>
+        
+    </div>
 
     </div>
 

@@ -50,10 +50,10 @@
         <ul class="nav justify-content-center" id="tipos">
             <div class="row">
                 <li class="nav-item col-6 col-lg-3 text-center" ng-repeat="tipo in listaTipos">
-                    <a href="#!{{tipo.nomeTipo.toLowerCase()}}" ng-click="tipoClicado(tipo);">
+                    <a href="#!{{tipo.nomeTipo.toLowerCase()}}">
                         <div class="row justify-content-center">
                             <div class="col-12 col-lg-12 text-center">
-                                <span ng-click="tipoClicado(tipo);" class="material-icons md-48 black-color rounded-circle bg-white shadow-lg pt-3" id="{{tipo.nomeTipo.toLowerCase()}}">{{tipo.iconTipo}}</span>
+                                <span class="material-icons md-48 black-color rounded-circle bg-white shadow-lg pt-3" id="{{tipo.nomeTipo.toLowerCase()}}">{{tipo.iconTipo}}</span>
                             </div>
                             <div class="col-12 col-lg-12  text-center">
                                 <p class="nav-link"><strong>{{tipo.nomeTipo}}</strong></p>
@@ -73,7 +73,7 @@
                     <div class="carousel-inner" ng-controler="promocaoController">
                         <div class="carousel-item" ng-class="{active:!$index}" ng-repeat="promocaoloja in listaPromocaoLojas">
                             <a href="{{promocaoloja.linkAfiliado}}" target="_blank">
-                                <img class="d-block w-100 img-banner" src="{{promocaoloja.bannerPromocaoMobile}}" alt="Primeiro Slide">
+                                <img class="d-block w-100 img-banner" srcset="{{promocaoloja.bannerPromocaoMobile}}" alt="Primeiro Slide">
                             </a>
                         </div>
                     </div>
