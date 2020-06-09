@@ -1,6 +1,6 @@
 angular.module('myApp')
-.controller('tipoController', ['$scope', '$rootScope', '$log','TipoServ','$location','$window', 'breadcrumbs', function ($rootScope, $scope, $log, TipoServ, $location, $window, breadcrumbs) {
-        
+.controller('tipoController', ['$scope', '$rootScope','$log','TipoServ','$location','$window', 'breadcrumbs', '$routeParams', function ($rootScope, $scope, $log, TipoServ, $location, $window, breadcrumbs,$routeParams) {
+
     TipoServ.getCategorias().then(function(data) {
         // Bloco abaixo carrega na Session a Lista para evitar de ta requisitando o servidor
         let loadListaCategorias = sessionStorage.getItem('listaCategorias');
@@ -25,6 +25,18 @@ angular.module('myApp')
         }else{
             $scope.listaTipos = JSON.parse(loadListaTipos);
         }
+
+        let nomeRota = $location.path().split('/')[1];
+        if($scope.listaTipos != undefined){
+            let tipoRota = $scope.listaTipos.filter(function(arr){
+                return arr.nomeTipo.toLowerCase() === nomeRota;
+            });
+
+            if(tipoRota.length > 0){
+                $scope.tipoClicado(tipoRota[0]);
+            }
+        }
+
     });
 
     TipoServ.getProdutos().then(function(data) {
@@ -330,4 +342,5 @@ angular.module('myApp')
     }
 
     $scope.visivel = false;
+    $scope.filtroRota = $routeParams.param;
 }])

@@ -23,7 +23,7 @@ angular.module('myApp',
         };
       }).run(['$rootScope', function ($rootScope) {
         $rootScope.$on("$locationChangeSuccess", function(event, next, current) { 
-            let nomeRota = next.split('/')[4];
+            /*let nomeRota = next.split('/')[4];
             if(event.targetScope.listaTipos != undefined){
                 let tipoRota = event.targetScope.listaTipos.filter(function(arr){
                     return arr.nomeTipo.toLowerCase() === nomeRota;
@@ -32,6 +32,6 @@ angular.module('myApp',
                 if(tipoRota.length > 0){
                     event.targetScope.tipoClicado(tipoRota[0]);
                 }
-            }
+            }*/
         });
       }])

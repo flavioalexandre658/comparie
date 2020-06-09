@@ -4,19 +4,19 @@ angular.module('routes',[])
         templateUrl: '../views/home.html',
         controller: 'homeController',
     })
-    .when("/consoles", {
+    .when("/consoles/:param?", {
         templateUrl: "../views/consoles.html",
         controller: 'tipoController',
     })
-    .when("/notebook", {
+    .when("/notebook/:param?", {
         templateUrl: "../views/notebook.html",
         controller: 'tipoController',
     })
-    .when("/tv", {
+    .when("/tv/:param?", {
         templateUrl: "../views/tv.html",
         controller: 'tipoController',
     })
-    .when("/celular", {
+    .when("/celular/:param?", {
         templateUrl: "../views/celular.html",
         controller: 'tipoController',
     })
