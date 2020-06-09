@@ -16,13 +16,23 @@ angular.module('directives',[])
             produtoloja_.idProduto = produtoloja[i].idProduto;
             produtoloja_.idLoja = produtoloja[i].idLoja;
             TipoServ.getPrecoSite(produtoloja_).then(function(data) {
+                
                 for(let i=0; i < produtoloja.length;i++){
                   if(produtoloja[i].idLoja == data[0].idLoja){
                     if(data[0].preco == '' || data[0].preco == undefined || data[0].preco == null){
                       produtoloja[i].estoque = 0;
-                      ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                        //console.log('Produto atualizado!');
-                      });
+
+                      const agora = new Date(); // Data de hoje
+                      const ultimaAtt = new Date(produtoloja[i].dataAtualizacao.toString()); // Data fim promocao
+                      const dif = Math.abs(agora.getTime() - ultimaAtt.getTime()); // Subtrai uma data pela outra
+                      const horas = Math.ceil(dif / (1000 * 60 * 60)); // Divide o total pelo total de milisegundos correspondentes a 1 dia. (1000 milisegundos = 1 segundo).
+
+                      if(horas >= 3){
+                        produtoloja[i].dataAtualizacao = agora.toUTCString()
+                        ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
+                          //console.log('Produto atualizado!');
+                        });
+                      }
                     }else{
                       let precoloja = data[0].preco.split('$')[1];
                           precoloja = precoloja.replace(/\s/g, '');
@@ -30,9 +40,18 @@ angular.module('directives',[])
                           produtoloja[i].preco = precoloja;
                           produtoloja[i].estoque = 1;
                           produtoloja[i].parcelas = data[0].parcelas;
-                          ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                            //console.log('Produto atualizado!');
-                          });
+
+                          const agora = new Date(); // Data de hoje
+                          const ultimaAtt = new Date(produtoloja[i].dataAtualizacao.toString()); // Data fim promocao
+                          const dif = Math.abs(agora.getTime() - ultimaAtt.getTime()); // Subtrai uma data pela outra
+                          const horas = Math.ceil(dif / (1000 * 60 * 60)); // Divide o total pelo total de milisegundos correspondentes a 1 dia. (1000 milisegundos = 1 segundo).
+
+                          if(horas >= 3){
+                            produtoloja[i].dataAtualizacao = agora.toUTCString();
+                            ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
+                              //console.log('Produto atualizado!');
+                            });
+                          }
                       }
                     }
                   }
@@ -85,9 +104,18 @@ angular.module('directives',[])
                   if(produtoloja[i].idLoja == data[0].idLoja){
                     if(data[0].preco == '' || data[0].preco == undefined || data[0].preco == null){
                       produtoloja[i].estoque = 0;
-                      ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                        //console.log('Produto atualizado!');
-                      });
+
+                      const agora = new Date(); // Data de hoje
+                      const ultimaAtt = new Date(produtoloja[i].dataAtualizacao.toString()); // Data fim promocao
+                      const dif = Math.abs(agora.getTime() - ultimaAtt.getTime()); // Subtrai uma data pela outra
+                      const horas = Math.ceil(dif / (1000 * 60 * 60)); // Divide o total pelo total de milisegundos correspondentes a 1 dia. (1000 milisegundos = 1 segundo).
+
+                      if(horas >= 3){
+                        produtoloja[i].dataAtualizacao = agora.toUTCString();
+                        ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
+                          //console.log('Produto atualizado!');
+                        });
+                      }
                     }else{
                       let precoloja = data[0].preco.split('$')[1];
                           precoloja = precoloja.replace(/\s/g, '');
@@ -95,9 +123,18 @@ angular.module('directives',[])
                           produtoloja[i].preco = precoloja;
                           produtoloja[i].estoque = 1;
                           produtoloja[i].parcelas = data[0].parcelas;
-                          ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
-                            //console.log('Produto atualizado!');
-                          });
+
+                          const agora = new Date(); // Data de hoje
+                          const ultimaAtt = new Date(produtoloja[i].dataAtualizacao.toString()); // Data fim promocao
+                          const dif = Math.abs(agora.getTime() - ultimaAtt.getTime()); // Subtrai uma data pela outra
+                          const horas = Math.ceil(dif / (1000 * 60 * 60)); // Divide o total pelo total de milisegundos correspondentes a 1 dia. (1000 milisegundos = 1 segundo).
+
+                          if(horas >= 3){
+                            produtoloja[i].dataAtualizacao = agora.toUTCString();
+                            ProdutoServ.editarProdutoLoja(produtoloja[i]).then(function(res) {
+                              //console.log('Produto atualizado!');
+                            });
+                          }
                       }
                     }
                   }

@@ -378,14 +378,15 @@ module.exports = function(app) {
 
   app.post('/cadastrarProdutoLoja', function(req, res) {  /// Cadastra um novo nicho
     produtolojas = new dbfun.ProdutoLoja();
-    produtolojas.query("INSERT INTO `comparie`.`produtoloja` (`idLoja`, `idProduto`, `linkAfiliado`, `link`, `preco`, `parcelas`, `quantidade`) VALUES('"
+    produtolojas.query("INSERT INTO `comparie`.`produtoloja` (`idLoja`, `idProduto`, `linkAfiliado`, `link`, `preco`, `parcelas`, `quantidade`, `dataAtualizacao`) VALUES('"
       + req.body.idLoja + "','"
       + req.body.idProduto + "','"
       + req.body.linkAfiliado + "','"
       + req.body.link + "','"
       + req.body.preco + "','"
       + req.body.parcelas + "','"
-      + req.body.quantidade +"');",
+      + req.body.quantidade + "','"
+      + req.body.dataAtualizacao +"');",
       function(err) {
         if(err){
           res.json({
@@ -408,6 +409,7 @@ module.exports = function(app) {
     +"',`preco` = '"+ req.body.preco
     +"',`parcelas` = '"+ req.body.parcelas
     +"',`estoque` = '"+ req.body.estoque
+    +"',`dataAtualizacao` = '"+ req.body.dataAtualizacao
     +"'WHERE `idProduto` = '"+req.params.idProduto+"'AND `idLoja` = '"+req.params.idLoja+"';",  /// Atualiza os dados com a query do banco a patir do id
       function(err) { // Caso ocorra um erro
         if(err)

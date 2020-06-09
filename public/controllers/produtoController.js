@@ -101,6 +101,7 @@ angular.module('myApp')
         produto.link = $scope.loja.link;
         produto.preco = $scope.loja.preco;
         produto.parcelas = $scope.loja.parcelas;
+        produto.dataAtualizacao = $scope.loja.dataAtualizacao;
 
         //Verifica na tabela se ja existe relacionamneto entra o produto e a loja e se ja existir
         //acrescendo uma quantidade
