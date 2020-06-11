@@ -22,6 +22,7 @@ angular.module('myApp',
         return result;
         };
       }).run(['$rootScope', function ($rootScope) {
+
         $rootScope.$on("$locationChangeSuccess", function(event, next, current) { 
             /*let nomeRota = next.split('/')[4];
             if(event.targetScope.listaTipos != undefined){
@@ -33,5 +34,6 @@ angular.module('myApp',
                     event.targetScope.tipoClicado(tipoRota[0]);
                 }
             }*/
+            
         });
       }])

@@ -21,7 +21,8 @@ module.exports = function(app) {
       idProduto = req.params.idProduto,
       idLoja = req.params.idLoja;
     const nomeloja = link.split('.');
-    url = link.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    url = link;
+    //.normalize('NFD').replace(/[\u0300-\u036f]/g, '') remover caracteres especiais
     request(url, function(error, response, html) {
         if (!error) {
             let $ = cheerio.load(html);

@@ -22,9 +22,9 @@ let createConnection  = function () {
         password: 'flavio25879',//
         database: 'comparie',//realmark
         connectionLimit : 1000,
-        connectTimeout  : 60 * 60 * 1000,
-        aquireTimeout   : 60 * 60 * 1000,
-        timeout         : 60 * 60 * 1000,
+        connectTimeout  : 60 * 60 * 3000,
+        aquireTimeout   : 60 * 60 * 3000,
+        timeout         : 60 * 60 * 3000,
     });
     
     let connection = null;

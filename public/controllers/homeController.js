@@ -57,16 +57,16 @@ angular.module('myApp')
         }
         $scope.listaPromocaoLojas = data;
     });
-
+    
     HomeServ.getPromocoes().then(function(data) {
         if(data.length > 0){ // As condições abaixo vao verificar se ja chegou na data final da promocao
                             // irá deletar a promocão e as lojas ligadas a elas automaticamente.
             let listaPromocaoVencida = data.filter(function(arr) {
                 const hoje = new Date(); // Data de hoje
                 const fimPromocao = new Date(arr.dataFim.toString()); // Data fim promocao
-                const dif = Math.abs(hoje.getTime() - fimPromocao.getTime()); // Subtrai uma data pela outra
+                const dif = hoje.getTime() - fimPromocao.getTime(); // Subtrai uma data pela outra
                 const dias = Math.ceil(dif / (1000 * 60 * 60 * 24)); // Divide o total pelo total de milisegundos correspondentes a 1 dia. (1000 milisegundos = 1 segundo).
-                return dias === 2; // Se dias == 2 é um dia após a dataFim da promoção
+                return dias === -2; // Se dias == 2 é um dia após a dataFim da promoção
             })
             sessionStorage.setItem("listaPromocaoVencida", JSON.stringify(listaPromocaoVencida));//Armazena no browser as promocoes vencidas
             if(listaPromocaoVencida != null && listaPromocaoVencida != undefined && listaPromocaoVencida.length > 0){

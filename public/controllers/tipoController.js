@@ -1,5 +1,8 @@
 angular.module('myApp')
 .controller('tipoController', ['$scope', '$rootScope','$log','TipoServ','$location','$window', 'breadcrumbs', '$routeParams', function ($rootScope, $scope, $log, TipoServ, $location, $window, breadcrumbs,$routeParams) {
+    
+    $scope.visivel = false;
+    $scope.filtroRota = $routeParams.param;
 
     TipoServ.getCategorias().then(function(data) {
         // Bloco abaixo carrega na Session a Lista para evitar de ta requisitando o servidor
@@ -14,29 +17,6 @@ angular.module('myApp')
 
         let loadListaCategoriasTipoClicado = sessionStorage.getItem('listaCategoriasTipoClicado');
         $scope.listaCategoriasTipoClicado = JSON.parse(loadListaCategoriasTipoClicado);
-    });
-
-    TipoServ.getTipos().then(function(data) {
-        // Bloco abaixo carrega na Session a Lista para evitar de ta requisitando o servidor
-        let loadListaTipos = sessionStorage.getItem('listaTipos');
-        if(loadListaTipos == null || loadListaTipos == undefined){
-            $scope.listaTipos = data;
-            sessionStorage.setItem("listaTipos", JSON.stringify(data));
-        }else{
-            $scope.listaTipos = JSON.parse(loadListaTipos);
-        }
-
-        let nomeRota = $location.path().split('/')[1];
-        if($scope.listaTipos != undefined){
-            let tipoRota = $scope.listaTipos.filter(function(arr){
-                return arr.nomeTipo.toLowerCase() === nomeRota;
-            });
-
-            if(tipoRota.length > 0){
-                $scope.tipoClicado(tipoRota[0]);
-            }
-        }
-
     });
 
     TipoServ.getProdutos().then(function(data) {
@@ -62,7 +42,6 @@ angular.module('myApp')
         }else{
             $scope.listaMarcas = JSON.parse(loadListaMarcas);
         }
-
         let loadListaMarcasTipoClicado = sessionStorage.getItem('listaMarcasTipoClicado');
         $scope.listaMarcasTipoClicado = JSON.parse(loadListaMarcasTipoClicado);
 
@@ -77,8 +56,6 @@ angular.module('myApp')
         }
 
         $scope.listaMarcasSelecionada = listaProdutoComMesmaCategoriaTipoMarca;
-
-        $scope.listaMarcas = data;
     });
 
     TipoServ.getTipoCategorias().then(function(data) {
@@ -109,16 +86,34 @@ angular.module('myApp')
         }
         let loadFaixasPreco = sessionStorage.getItem('faixasPreco');
         $scope.faixasPreco = JSON.parse(loadFaixasPreco);
+        let nomeRota = $location.path().split('/')[1];
+        if($scope.listaTipos != undefined){
+            let tipoRota = $scope.listaTipos.filter(function(arr){
+                return arr.nomeTipo.toLowerCase() === nomeRota;
+            });
+
+            if(tipoRota.length > 0){
+                $scope.tipoClicado(tipoRota[0]);
+            }
+        }
     });
 
     TipoServ.getProdutoCategorias().then(function(data) {
         $scope.listaProdutoCategorias = data;
     });
 
+   TipoServ.getTipos().then(function(data) {
+        // Bloco abaixo carrega na Session a Lista para evitar de ta requisitando o servidor
+        let loadListaTipos = sessionStorage.getItem('listaTipos');
+        if(loadListaTipos == null || loadListaTipos == undefined){
+            $scope.listaTipos = data;
+            sessionStorage.setItem("listaTipos", JSON.stringify(data));
+        }else{
+            $scope.listaTipos = JSON.parse(loadListaTipos);
+        }
+    });
+
     $scope.tipoClicado = function(tipo) {
-        if($scope.listaTipoCategorias != undefined && $scope.listaCategorias != undefined
-            && $scope.listaProdutos != undefined && $scope.listaMarcas != undefined
-            && $scope.listaProdutoLojas != undefined){
             /*
                 *Percorre a listaTipoCategorias(->arr), verifica qual é o idTipo igual ao tipo.idTipo que foi clicado
             */
@@ -159,15 +154,14 @@ angular.module('myApp')
             $scope.faixasPreco = defineFaixasPreco(listaPodutoLojaTipoClicado);
             $scope.listaCategoriasTipoClicado = listaCategoriaComMesmaCategoriaTipo;
             $scope.listaProdutosTipoClicado =  listaProdutosTipoClicado;
-            $scope.listaMarcasTipoClicado = listaMarcasTipoClicado;
+            $scope.listaMarcasSelecionada = listaMarcasTipoClicado;
             $scope.listaProdutosSelecionada = null;
 
             //Armazena as variaveis para caso a página seja recarregada
-            sessionStorage.setItem("listaCategoriasTipoClicado", JSON.stringify($scope.listaCategoriasTipoClicado));
-            sessionStorage.setItem("listaProdutosTipoClicado", JSON.stringify($scope.listaProdutosTipoClicado));
-            sessionStorage.setItem("listaMarcasTipoClicado", JSON.stringify($scope.listaMarcasTipoClicado));
+            sessionStorage.setItem("listaCategoriasTipoClicado", JSON.stringify(listaCategoriaComMesmaCategoriaTipo));
+            sessionStorage.setItem("listaProdutosTipoClicado", JSON.stringify(listaProdutosTipoClicado));
+            sessionStorage.setItem("listaMarcasTipoClicado", JSON.stringify(listaMarcasTipoClicado));
             sessionStorage.setItem("faixasPreco", JSON.stringify($scope.faixasPreco));
-        }
     }
 
     $scope.defineCategoria = function(categoria) {
@@ -341,6 +335,4 @@ angular.module('myApp')
         return faixas;
     }
 
-    $scope.visivel = false;
-    $scope.filtroRota = $routeParams.param;
 }])
