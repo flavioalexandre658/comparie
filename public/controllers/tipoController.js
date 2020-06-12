@@ -153,13 +153,15 @@ angular.module('myApp')
 
             $scope.faixasPreco = defineFaixasPreco(listaPodutoLojaTipoClicado);
             $scope.listaCategoriasTipoClicado = listaCategoriaComMesmaCategoriaTipo;
-            $scope.listaProdutosTipoClicado =  listaProdutosTipoClicado;
+            $scope.listaProdutosTipoClicado =  listaProdutosTipoClicado.sort(function(a,b){ // Ordena a lista de forma crescente
+                return b.cliques - a.cliques;
+            });;
             $scope.listaMarcasSelecionada = listaMarcasTipoClicado;
             $scope.listaProdutosSelecionada = null;
 
             //Armazena as variaveis para caso a página seja recarregada
             sessionStorage.setItem("listaCategoriasTipoClicado", JSON.stringify(listaCategoriaComMesmaCategoriaTipo));
-            sessionStorage.setItem("listaProdutosTipoClicado", JSON.stringify(listaProdutosTipoClicado));
+            sessionStorage.setItem("listaProdutosTipoClicado", JSON.stringify($scope.listaProdutosTipoClicado ));
             sessionStorage.setItem("listaMarcasTipoClicado", JSON.stringify(listaMarcasTipoClicado));
             sessionStorage.setItem("faixasPreco", JSON.stringify($scope.faixasPreco));
     }
@@ -197,7 +199,9 @@ angular.module('myApp')
 
         $scope.faixasPreco = defineFaixasPreco(listaPodutoLojaComMesmaCategoriaTipoMarcaPreco);
         $scope.listaMarcasSelecionada = listaProdutoComMesmaCategoriaTipoMarca;
-        $scope.listaProdutosSelecionada = listaProdutoComMesmaCategoriaTipo;
+        $scope.listaProdutosSelecionada = listaProdutoComMesmaCategoriaTipo.sort(function(a,b){ // Ordena a lista de forma crescente
+            return b.cliques - a.cliques;
+        })
     };
 
     $scope.defineMarca = function(marca, listaProdutos){	
@@ -219,14 +223,18 @@ angular.module('myApp')
             })
 
             $scope.faixasPreco = defineFaixasPreco(listaPodutoLojaComMesmoTipoMarcaPreco);
-            $scope.listaProdutosSelecionada = listaProdutoComMesmaMarca;
+            $scope.listaProdutosSelecionada = listaProdutoComMesmaMarca.sort(function(a,b){ // Ordena a lista de forma crescente
+                return b.cliques - a.cliques;
+            });
         }
     }
 
     $scope.buscaProduto = function(busca){
         $scope.busca = busca;
         sessionStorage.setItem("pesquisa", busca);
-        $scope.listaProdutosSelecionada = $scope.listaProdutos;
+        $scope.listaProdutosSelecionada = $scope.listaProdutos.sort(function(a,b){ // Ordena a lista de forma crescente
+            return b.cliques - a.cliques;
+        });
     }
 
     $scope.definePreco = function(faixaPreco, listaProdutos){
@@ -263,7 +271,9 @@ angular.module('myApp')
             })
 
             $scope.listaMarcasSelecionada = listaProdutoFaixaPrecoMarca;
-            $scope.listaProdutosSelecionada = listaProdutoFaixaPreco;
+            $scope.listaProdutosSelecionada = listaProdutoFaixaPreco.sort(function(a,b){ // Ordena a lista de forma crescente
+                return b.cliques - a.cliques;
+            });
         }
     }
     
