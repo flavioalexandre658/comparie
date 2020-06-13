@@ -2,13 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./routes');
+//gzip
+const compress = require('compression');
+
 var mysql = require('mysql');
 var path = require('path');
 var helmet = require('helmet');
 var cors = require('cors')
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(compress())
 //Conexao com o banco será feita no arquivo db.js
 const dbfun = require('./db');
 
